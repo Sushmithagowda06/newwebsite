@@ -1,4 +1,4 @@
-import BookingForm from '../components/BookingForm'
+import BookingForm from "../../components/Bookings/BookingForm";
 import styles from './Appointment.module.css'
 
 export default function Appointment() {

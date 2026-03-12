@@ -1,5 +1,5 @@
-import Services from '../components/Services'
-import styles from './PageHero.module.css'
+import Services from "../components/Services/Services";
+import styles from "./PageHero.module.css";
 
 export default function ServicesPage() {
   return (

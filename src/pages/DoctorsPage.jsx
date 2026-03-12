@@ -1,4 +1,4 @@
-import Doctors from '../components/Doctors'
+import Doctors from "../components/Doctors/Doctors";
 import styles from './PageHero.module.css'
 
 export default function DoctorsPage() {

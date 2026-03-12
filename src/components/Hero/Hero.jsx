@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Hero.module.css'
-import doctorImg from "./doctor.png";
+import doctorImg from "../images/doctor.png";
 
 const stats = [
   <div className={styles.movingStrip}>
