@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom'
 import styles from './Hero.module.css'
+import doctorImg from "./doctor.png";
 
 const stats = [
-  { value: '180K+', label: 'Patients treated' },
-  { value: '98%', label: 'Satisfaction rate' },
-  { value: '500+', label: 'Expert doctors' },
+  <div className={styles.movingStrip}>
+  <div className={styles.movingText}>
+    🏥 Healthcare at your doorstep • 👩‍⚕️ Trusted Doctors • 📅 Instant Appointments • 💊 Quality Care •
+  </div>
+</div>
+  // { value: '10K+', label: 'Patients treated' },
+  // { value: '98%', label: 'Satisfaction rate' },
+  // { value: '100+', label: 'Expert doctors' },
 ]
 
 const avatars = ['👩‍⚕️', '👨‍⚕️', '👩‍⚕️']
@@ -21,7 +27,7 @@ export default function Hero() {
         <div className={styles.content}>
           <div className={styles.badge}>
             <span className={styles.badgeDot} />
-            Trusted by 180K+ patients
+            Trusted by 10K+ patients
           </div>
 
           <h1 className={styles.heading}>
@@ -32,25 +38,24 @@ export default function Hero() {
 
           <p className={styles.sub}>
             Revolutionizing healthcare through innovative technology. 
-            Get expert care from top specialists — in-clinic or virtually, 
-            from anywhere.
+            Get expert care from top specialists — in-clinic or at home.
           </p>
 
           <div className={styles.actions}>
             <Link to="/appointment" className={styles.btnPrimary}>
-              Book Free Consultation
+              Book Consultation
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </Link>
-            <a href="#services" className={styles.btnGhost}>
-              <span className={styles.playIcon}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </span>
-              See Our Services
-            </a>
+           <Link to="/plans" className={styles.btnGhost}>
+  <span className={styles.playIcon}>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  </span>
+  Explore Our Plans
+</Link>
           </div>
 
           {/* Social proof */}
@@ -73,17 +78,9 @@ export default function Hero() {
           <div className={styles.imageWrap}>
             <div className={styles.imageGlow} />
             <div className={styles.imagePlaceholder}>
-              <div className={styles.doctorGraphic}>
-                <div className={styles.doctorCircle}>
-                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-                    <circle cx="40" cy="32" r="18" fill="var(--primary-pale)" stroke="var(--primary)" strokeWidth="2"/>
-                    <path d="M15 72c0-13.807 11.193-25 25-25s25 11.193 25 25" fill="var(--primary-pale)" stroke="var(--primary)" strokeWidth="2"/>
-                    <path d="M32 30h16M40 22v16" stroke="var(--primary)" strokeWidth="2.5" strokeLinecap="round"/>
-                  </svg>
-                </div>
-                <p>Dr. Sarah Chen</p>
-                <span>Senior Cardiologist</span>
-              </div>
+    <div className={styles.doctorGraphic}>
+  <img src={doctorImg} className={styles.doctorImg}/>
+</div>
             </div>
 
             {/* Floating cards */}
@@ -115,18 +112,14 @@ export default function Hero() {
       </div>
 
       {/* Stats bar */}
-      <div className={styles.statsBar}>
-        <div className="container">
-          <div className={styles.stats}>
-            {stats.map((s, i) => (
-              <div key={i} className={styles.statItem}>
-                <p className={styles.statValue}>{s.value}</p>
-                <p className={styles.statLabel}>{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+     {/* Moving Healthcare Strip */}
+<div className={styles.statsBar}>
+  <div className={styles.movingStrip}>
+    <div className={styles.movingText}>
+      🏥 Healthcare at your doorstep • 👩‍⚕️ Trusted Doctors • 📅 Instant Appointments • 💊 Quality Care 
+    </div>
+  </div>
+</div>
     </section>
   )
 }

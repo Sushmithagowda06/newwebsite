@@ -11,11 +11,11 @@ const features = [
     title: 'Best Medical Service',
     desc: 'Combining deep clinical expertise with cutting-edge diagnostic technology for accurate outcomes.',
   },
-  {
-    icon: '💻',
-    title: 'Virtual Consultation',
-    desc: 'Access professional healthcare via secure video or chat — no travel, no waiting rooms.',
-  },
+  // {
+  //   icon: '💻',
+  //   title: 'Virtual Consultation',
+  //   desc: 'Access professional healthcare via secure video or chat — no travel, no waiting rooms.',
+  // },
   {
     icon: '🔔',
     title: '24/7 Instant Support',

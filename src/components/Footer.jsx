@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
 
 const links = {
-  Company: ['About Us', 'Our Doctors', 'Careers', 'Press'],
-  Services: ['Cardiology', 'Pulmonology', 'Orthopedics', 'Neurology'],
+  Company: ['About Us', 'Our Doctors', 'Why Choose Us', 'Plans'],
+  Services: ['Doctor Consultation', 'Physiotherapy', 'Elderly Care', 'Pharmacy', 'Nursing', 'Diagnostics'],
   Support: ['Help Center', 'Book Appointment', 'Privacy Policy', 'Terms of Use'],
 }
 
@@ -20,22 +20,66 @@ export default function Footer() {
                   <path d="M9 14h10M14 9v10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </div>
-              <span>Cuure<span>.health</span></span>
+              <span>cuure<span>.health</span></span>
             </div>
             <p>Revolutionizing healthcare through innovative technology for better lives and improved care.</p>
             <div className={styles.socials}>
-              {['Twitter', 'LinkedIn', 'Instagram', 'YouTube'].map(s => (
-                <a key={s} href="#" className={styles.social} aria-label={s}>{s[0]}</a>
-              ))}
-            </div>
+  <a
+    href="https://wa.me/917483068353"
+    target="_blank"
+    rel="noopener noreferrer"
+    className={styles.social}
+  >
+    W
+  </a>
+
+  <a
+    href="https://instagram.com/cuure.health"
+    target="_blank"
+    rel="noopener noreferrer"
+    className={styles.social}
+  >
+    I
+  </a>
+
+  <a
+    href="https://youtube.com/yourchannel"
+    target="_blank"
+    rel="noopener noreferrer"
+    className={styles.social}
+  >
+    Y
+  </a>
+</div>
           </div>
 
           {Object.entries(links).map(([group, items]) => (
             <div key={group} className={styles.col}>
               <h4>{group}</h4>
-              {items.map(item => (
-                <a key={item} href="#" className={styles.colLink}>{item}</a>
-              ))}
+{items.map(item => {
+  const paths = {
+    "About Us": "/about",
+    "Our Doctors": "/doctors",
+    "Why Choose Us": "/",
+    "Plans": "/plans",
+    "Doctor Consultation": "/services",
+    "Physiotherapy": "/services",
+    "Elderly Care": "/services",
+    "Pharmacy": "/services",
+    "Nursing": "/services",
+    "Diagnostics": "/services",
+    "Help Center": "/contact",
+    "Book Appointment": "/appointment",
+    "Privacy Policy": "/",
+    "Terms of Use": "/"
+  }
+
+  return (
+    <Link key={item} to={paths[item]} className={styles.colLink}>
+      {item}
+    </Link>
+  )
+})}
             </div>
           ))}
 
@@ -50,7 +94,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <p>© 2025 Cuure Health. All rights reserved.</p>
+          <p>© 2025 cuure.health. All rights reserved.</p>
           <p>Made with ❤️ for better healthcare</p>
         </div>
       </div>

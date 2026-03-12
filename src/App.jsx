@@ -3,9 +3,14 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Appointment from './pages/Appointment'
+import Plans from './pages/Plans'
 import ServicesPage from './pages/ServicesPage'
 import DoctorsPage from './pages/DoctorsPage'
 import Contact from './pages/Contact'
+import { FaWhatsapp } from "react-icons/fa";
+import ScrollTop from "./components/ScrollTop";
+// import About from "./pages/About"
+// import Blog from "./pages/Blog"
 
 export default function App() {
   return (
@@ -19,7 +24,17 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/plans" element={<Plans />} />
       </Routes>
+      <ScrollTop />
+<a
+  href="https://wa.me/917483068353"
+  className="whatsapp-float"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <FaWhatsapp size={28} />
+</a>
       <Footer />
     </>
   )
@@ -34,7 +49,7 @@ function About() {
       }}>
         <div className="container">
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: 800, marginBottom: 20 }}>
-            About <span style={{ color: 'rgba(255,255,255,0.6)' }}>Cuure Health</span>
+            About <span style={{ color: 'rgba(255,255,255,0.6)' }}>cuure.health</span>
           </h1>
           <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', maxWidth: 560, lineHeight: 1.7 }}>
             Founded in 2020, Cuure Health is on a mission to make quality healthcare accessible to everyone.

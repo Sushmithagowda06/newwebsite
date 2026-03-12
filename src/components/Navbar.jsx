@@ -2,12 +2,20 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
+{/* <nav>
+  <Link to="/">Home</Link>
+  <Link to="/services">Services</Link>
+  <Link to="/doctors">Doctors</Link>
+  <Link to="/plans">Plans</Link>
+</nav> */}
+
 const navLinks = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Doctors', to: '/doctors' },
   { label: 'Blog', to: '/blog' },
   { label: 'Contact', to: '/contact' },
+  { label: 'Plans', to: '/plans' },
 ]
 
 export default function Navbar() {
@@ -36,20 +44,22 @@ export default function Navbar() {
               <path d="M9 14h10M14 9v10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           </div>
-          <span className={styles.logoText}>Cuure<span>.health</span></span>
+          <span className={styles.logoText}>cuure<span>.health</span></span>
         </Link>
 
-        <nav className={`${styles.links} ${mobileOpen ? styles.open : ''}`}>
-          {navLinks.map(link => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`${styles.link} ${location.pathname === link.to ? styles.active : ''}`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+       <nav className={`${styles.links} ${mobileOpen ? styles.open : ''}`}>
+  {navLinks.map(link => (
+    <Link
+      key={link.to}
+      to={link.to}
+      className={`${styles.link} ${
+        location.pathname === link.to ? styles.active : ""
+      }`}
+    >
+      {link.label}
+    </Link>
+  ))}
+</nav>
 
         <div className={styles.cta}>
           <Link to="/appointment" className={styles.btnBook}>

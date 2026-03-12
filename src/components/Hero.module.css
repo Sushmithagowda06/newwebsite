@@ -219,7 +219,7 @@
   background: white;
   border-radius: var(--radius-xl);
   padding: 40px;
-  aspect-ratio: 1;
+  aspect-ratio: .85;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,8 +228,12 @@
   animation: float 5s ease-in-out infinite;
 }
 
-.doctorGraphic {
-  text-align: center;
+.doctorGraphic{
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
 .doctorCircle {
@@ -344,15 +348,32 @@
   color: rgba(255,255,255,0.7);
   margin-top: 4px;
 }
+.doctorImg{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
 
 /* Responsive */
-@media (max-width: 900px) {
-  .inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 40px;
-    padding-top: 40px;
-  }
+@media (max-width: 900px){
+
+.inner{
+  grid-template-columns:1fr;
+  min-height:auto;
+  padding-top:20px;
+}
+
+.visual{
+  margin-top:10px;
+}
+
+.imagePlaceholder{
+  width:240px;
+  height:320px;
+  margin:auto;
+}
+
+
 
   .sub, .proof, .actions {
     margin-left: auto;
@@ -367,11 +388,30 @@
     justify-content: center;
   }
 
-  .visual {
-    display: none;
-  }
-
   .stats {
     gap: 40px;
+  }
+}
+.movingStrip{
+  width:100%;
+  overflow:hidden;
+  padding:25px 0;
+}
+
+.movingText{
+  color:white;
+  font-size:24px;
+  font-weight:600;
+  white-space:nowrap;
+  display:inline-block;
+  animation:scrollText 18s linear infinite;
+}
+
+@keyframes scrollText{
+  from{
+    transform:translateX(100%);
+  }
+  to{
+    transform:translateX(-100%);
   }
 }
