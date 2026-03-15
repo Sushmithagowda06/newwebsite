@@ -21,13 +21,9 @@ function HeroTitle() {
   return (
     <h1 className={styles.title}>
       Advanced
-      <br />
-
-      <span key={words[index]} className={styles.highlight}>
+      <p><span key={words[index]} className={styles.highlight}>
         {words[index]}
-      </span>
-
-      <br />
+      </span></p>
       At Your Home!
     </h1>
   );

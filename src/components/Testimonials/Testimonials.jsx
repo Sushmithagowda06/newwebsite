@@ -5,14 +5,14 @@ const testimonials = [
   {
     name: 'Anjali Mehta',
     role: 'Marketing Manager, Bengaluru',
-    text: 'Cuure Health made getting a cardiology consultation so easy. I booked the appointment in minutes and the doctor was incredibly thorough. My health has improved massively since I started using this platform.',
+    text: 'Cuure Health made booking doctor consultations and physiotherapy at home extremely easy. I scheduled the appointment in minutes and received professional care without leaving my home.',
     rating: 5,
     emoji: '👩',
   },
   {
     name: 'Rajan Pillai',
     role: 'Software Engineer, Chennai',
-    text: 'The virtual consultation feature is a game-changer. I had a pulmonology follow-up without leaving my home. The doctors are top-tier and the platform is extremely intuitive.',
+    text: 'Cuure Health made getting medical care at home incredibly convenient. I scheduled the appointment in minutes and received professional treatment without leaving my house.',
     rating: 5,
     emoji: '👨',
   },
