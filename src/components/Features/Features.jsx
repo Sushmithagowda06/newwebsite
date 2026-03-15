@@ -2,6 +2,11 @@ import styles from './Features.module.css'
 
 const features = [
   {
+    icon: '💻',
+    title: 'Home Service',
+    desc: 'Book doctor consultations and physiotherapy at home with trusted healthcare professionals.',
+  },
+  {
     icon: '🏥',
     title: 'Expert Medical Team',
     desc: 'Our 500+ board-certified specialists deliver compassionate, precise, evidence-based care.',
@@ -11,11 +16,7 @@ const features = [
     title: 'Best Medical Service',
     desc: 'Combining deep clinical expertise with cutting-edge diagnostic technology for accurate outcomes.',
   },
-  // {
-  //   icon: '💻',
-  //   title: 'Virtual Consultation',
-  //   desc: 'Access professional healthcare via secure video or chat — no travel, no waiting rooms.',
-  // },
+  
   {
     icon: '🔔',
     title: '24/7 Instant Support',
@@ -59,11 +60,19 @@ export default function Features() {
         {/* Visual band */}
         <div className={styles.band}>
           <div className={styles.bandContent}>
-            <div className={styles.bandText}>
-              <h3>Powered by AI-driven diagnostics</h3>
-              <p>Our platform integrates real-time health monitoring, AI triage, and specialist matching — all in one place.</p>
-            </div>
-            <div className={styles.bandStats}>
+            <div className={styles.subscribeBanner}>
+  <h2>Stay Updated with Cuure Health</h2>
+
+  <p>
+    Get expert health tips, service updates, doctor availability alerts,
+    and wellness advice to help you stay healthier every day.
+  </p>
+
+  <p>
+    Trusted by thousands of patients for reliable home healthcare and consultations.
+  </p>
+</div>
+            {/* <div className={styles.bandStats}>
               <div className={styles.bandStat}>
                 <span>99.2%</span>
                 <p>Diagnostic accuracy</p>
@@ -76,7 +85,7 @@ export default function Features() {
                 <span>40+</span>
                 <p>Specialties covered</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -1,19 +1,37 @@
-import { Link } from 'react-router-dom'
-import styles from './Hero.module.css'
+import { Link } from "react-router-dom";
+import styles from "./Hero.module.css";
 import doctorImg from "../images/doctor.png";
+import { useState, useEffect } from "react";
 
-const stats = [
-  <div className={styles.movingStrip}>
-  <div className={styles.movingText}>
-    🏥 Healthcare at your doorstep • 👩‍⚕️ Trusted Doctors • 📅 Instant Appointments • 💊 Quality Care •
-  </div>
-</div>
-  // { value: '10K+', label: 'Patients treated' },
-  // { value: '98%', label: 'Satisfaction rate' },
-  // { value: '100+', label: 'Expert doctors' },
-]
+const avatars = ["👩‍⚕️", "👨‍⚕️", "👩‍⚕️"];
 
-const avatars = ['👩‍⚕️', '👨‍⚕️', '👩‍⚕️']
+/* Rotating Heading Component */
+function HeroTitle() {
+  const words = ["Healthcare", "Physiotherapy", "Consultation", "Elderly Care", "Nursing", "Diagnostics"];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <h1 className={styles.title}>
+      Advanced
+      <br />
+
+      <span key={words[index]} className={styles.highlight}>
+        {words[index]}
+      </span>
+
+      <br />
+      At Your Home!
+    </h1>
+  );
+}
 
 export default function Hero() {
   return (
@@ -30,43 +48,57 @@ export default function Hero() {
             Trusted by 10K+ patients
           </div>
 
-          <h1 className={styles.heading}>
-            Advanced
-            <span className={styles.headingAccent}> Healthcare</span>
-            <br />for Better Lives
-          </h1>
+          {/* Rotating Title */}
+          <HeroTitle />
 
           <p className={styles.sub}>
-            Revolutionizing healthcare through innovative technology. 
-            Get expert care from top specialists — in-clinic or at home.
+            Find trusted doctors, book online consultations, and get physiotherapy and healthcare services at home.
           </p>
 
           <div className={styles.actions}>
             <Link to="/appointment" className={styles.btnPrimary}>
               Book Consultation
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </Link>
-           <Link to="/plans" className={styles.btnGhost}>
-  <span className={styles.playIcon}>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-  </span>
-  Explore Our Plans
-</Link>
+
+            <Link to="/plans" className={styles.btnGhost}>
+              <span className={styles.playIcon}>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+              Explore Our Plans
+            </Link>
           </div>
 
           {/* Social proof */}
           <div className={styles.proof}>
             <div className={styles.avatars}>
               {avatars.map((a, i) => (
-                <div key={i} className={styles.avatar} style={{ zIndex: avatars.length - i }}>
+                <div
+                  key={i}
+                  className={styles.avatar}
+                  style={{ zIndex: avatars.length - i }}
+                >
                   {a}
                 </div>
               ))}
             </div>
+
             <p className={styles.proofText}>
               <strong>4.9/5</strong> rating from our patients
             </p>
@@ -77,10 +109,11 @@ export default function Hero() {
         <div className={styles.visual}>
           <div className={styles.imageWrap}>
             <div className={styles.imageGlow} />
+
             <div className={styles.imagePlaceholder}>
-    <div className={styles.doctorGraphic}>
-  <img src={doctorImg} className={styles.doctorImg}/>
-</div>
+              <div className={styles.doctorGraphic}>
+                <img src={doctorImg} className={styles.doctorImg} />
+              </div>
             </div>
 
             {/* Floating cards */}
@@ -111,15 +144,15 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Stats bar */}
-     {/* Moving Healthcare Strip */}
-<div className={styles.statsBar}>
-  <div className={styles.movingStrip}>
-    <div className={styles.movingText}>
-      🏥 Healthcare at your doorstep • 👩‍⚕️ Trusted Doctors • 📅 Instant Appointments • 💊 Quality Care 
-    </div>
-  </div>
-</div>
+      {/* Moving Healthcare Strip */}
+      <div className={styles.statsBar}>
+        <div className={styles.movingStrip}>
+          <div className={styles.movingText}>
+            🏥 Healthcare at your home • 👩‍⚕️ Trusted Doctors • 📅 Instant
+            Appointments • 💊 Quality Care
+          </div>
+        </div>
+      </div>
     </section>
-  )
+  );
 }

@@ -82,8 +82,8 @@ export default function Testimonials() {
             ))}
 
             <div className={styles.cta}>
-              <p>Join 180,000+ patients who trust Cuure Health</p>
-              <a href="/appointment" className={styles.ctaBtn}>Get Started Free</a>
+              <p>Join 10,000+ patients who trust Cuure Health</p>
+              <a href="/appointment" className={styles.ctaBtn}>Get Started</a>
             </div>
           </div>
         </div>
