@@ -508,3 +508,10 @@
   }
 
 }
+@media (max-width: 768px) {
+
+  .visual {
+    margin-bottom: 60px;
+  }
+
+}
