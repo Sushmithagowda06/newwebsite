@@ -8,6 +8,8 @@ import DoctorsPage from './pages/DoctorsPage'
 import Contact from './pages/Contact/Contact'
 import About from './pages/About'
 import Blog from './pages/Blog'
+import Plans from './pages/Plans/Plans'
+
 
 export default function App() {
   return (
@@ -21,6 +23,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/plans" element={<Plans />} />
       </Routes>
       <Footer />
     </>

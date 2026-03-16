@@ -515,3 +515,36 @@
   }
 
 }
+.cursor {
+  margin-left: 4px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+.highlight {
+  color: #4f8cff;
+  display: inline-block;
+  min-height: 1.2em;
+}
+.wordContainer {
+  display: block;
+  height: 1.2em;   /* reserves space for the word */
+}
+
+.highlight {
+  color: #4f8cff;
+  display: inline-block;
+}

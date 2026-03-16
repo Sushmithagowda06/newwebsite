@@ -7,25 +7,54 @@ const avatars = ["👩‍⚕️", "👨‍⚕️", "👩‍⚕️"];
 
 /* Rotating Heading Component */
 function HeroTitle() {
-  const words = ["Healthcare", "Physiotherapy", "Consultation", "Elderly Care", "Nursing", "Diagnostics"];
-  const [index, setIndex] = useState(0);
+  const words = [
+    "Healthcare",
+    "Physiotherapy",
+    "Consultation",
+    "Elderly Care",
+    "Nursing",
+    "Diagnostics"
+  ];
+
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2500);
+    if (charIndex < words[wordIndex].length) {
+      const timeout = setTimeout(() => {
+        setText((prev) => prev + words[wordIndex][charIndex]);
+        setCharIndex((prev) => prev + 1);
+      }, 150); // typing speed
 
-    return () => clearInterval(interval);
-  }, []);
+      return () => clearTimeout(timeout);
+    } else {
+      const pause = setTimeout(() => {
+        setFade(false); // start fade out
+
+        setTimeout(() => {
+          setText("");
+          setCharIndex(0);
+          setWordIndex((prev) => (prev + 1) % words.length);
+          setFade(true); // fade in next word
+        }, 400);
+      }, 2000);
+
+      return () => clearTimeout(pause);
+    }
+  }, [charIndex, wordIndex]);
 
   return (
     <h1 className={styles.title}>
-      Advanced
-      <p><span key={words[index]} className={styles.highlight}>
-        {words[index]}
-      </span></p>
-      At Your Home!
-    </h1>
+  Advanced
+
+  <span className={styles.wordContainer}>
+    <span className={styles.highlight}>{text}</span>
+  </span>
+
+  At Your Home!
+</h1>
   );
 }
 
