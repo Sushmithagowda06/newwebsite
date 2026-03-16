@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './About.css'
+import styles from './About.css'
 
 function About() {
     const [show, setShow] = useState(false); 

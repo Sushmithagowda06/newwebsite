@@ -48,7 +48,7 @@ export default function Hero() {
           <HeroTitle />
 
           <p className={styles.sub}>
-            Find trusted doctors, book online consultations, and get physiotherapy and healthcare services at home.
+            Find trusted doctors, book online consultations, and get all the healthcare services at home.
           </p>
 
           <div className={styles.actions}>
