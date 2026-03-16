@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Hero.module.css";
-import doctorImg from "../images/doctor.png";
+// import doctorImg from "../images/doctor.png";
 import { useState, useEffect } from "react";
 
 const avatars = ["👩‍⚕️", "👨‍⚕️", "👩‍⚕️"];
@@ -108,7 +108,7 @@ export default function Hero() {
 
             <div className={styles.imagePlaceholder}>
               <div className={styles.doctorGraphic}>
-                <img src={doctorImg} className={styles.doctorImg} />
+                <img src="/images/doctor/doctor.png" className={styles.doctorImg} alt="Doctor" />
               </div>
             </div>
 
