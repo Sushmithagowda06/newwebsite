@@ -548,3 +548,18 @@
   color: #4f8cff;
   display: inline-block;
 }
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.dot {
+  margin: 0 14px;
+}

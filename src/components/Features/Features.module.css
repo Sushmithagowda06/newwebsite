@@ -295,3 +295,18 @@
   }
 
 }
+.icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.iconWrap {
+  width: 56px;
+  height: 56px;
+  background: #eef3ff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -137,7 +137,7 @@ export default function Hero() {
 
             <div className={styles.imagePlaceholder}>
               <div className={styles.doctorGraphic}>
-                <img src="/images/doctor/doctor.png" className={styles.doctorImg} alt="Doctor" />
+                <img src="/images/hero/doctor.png" className={styles.doctorImg} alt="Doctor" />
               </div>
             </div>
 
@@ -173,9 +173,33 @@ export default function Hero() {
       <div className={styles.statsBar}>
         <div className={styles.movingStrip}>
           <div className={styles.movingText}>
-            🏥 Healthcare at your home • 👩‍⚕️ Trusted Doctors • 📅 Instant
-            Appointments • 💊 Quality Care
-          </div>
+  <span className={styles.item}>
+    <img src="/images/hero/home.png" alt="Healthcare at home" />
+    Healthcare at your home
+  </span>
+
+  <span className={styles.dot}>•</span>
+
+  <span className={styles.item}>
+    <img src="/images/hero/trusted.png" alt="Trusted Doctors" />
+
+    Trusted Doctors
+  </span>
+
+  <span className={styles.dot}>•</span>
+
+  <span className={styles.item}>
+    <img src="/images/hero/instant.png" alt="Instant Appointments" />
+    Instant Appointments
+  </span>
+
+  <span className={styles.dot}>•</span>
+
+  <span className={styles.item}>
+    <img src="/images/hero/quality.png" alt="Quality Care" />
+    Quality Care
+  </span>
+</div>
         </div>
       </div>
     </section>
