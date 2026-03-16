@@ -1,6 +1,6 @@
 import Hero from '../components/Hero/Hero'
 // import Plans from '../components/Plans'
-import About from '../components/About/About'
+// import About from '../components/About/About'
 import {ServicesPreview } from '../components/Services/Services'
 import Features from '../components/Features/Features'
 import { DoctorsHome } from '../components/Doctors/Doctors'
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <About />
+      {/* <About /> */}
       {/* <Plans /> */}
       <ServicesPreview />
       <Features />
