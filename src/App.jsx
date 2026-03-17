@@ -11,6 +11,7 @@ import Blog from './pages/Blog'
 import Plans from './pages/Plans/Plans'
 import ScrollTop from './ScrollTop'
 import WhatsApp from './WhatsApp'
+import Nursing from './pages/Nursing/nursing';
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/plans" element={<Plans />} />
+        <Route path="/nursing" element={<Nursing />} />
       </Routes>
 
       {/* Global buttons */}

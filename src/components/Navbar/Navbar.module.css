@@ -163,3 +163,63 @@
     display: none;
   }
 }
+/* DROPDOWN WRAPPER */
+.dropdown {
+  position: relative;
+}
+
+/* MENU */
+.dropdownMenu {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 220px;
+  background: #001f5b;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* LINKS INSIDE */
+.dropdownMenu a {
+  padding: 12px 16px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdownMenu a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* SHOW */
+.dropdown:hover .dropdownMenu {
+  display: flex;
+}
+.dropdown {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 220px;
+  background: #001f5b;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+/* ADD THIS */
+.dropdown:hover .dropdownMenu,
+.dropdownMenu:hover {
+  display: flex;
+}
+.header {
+  z-index: 9999; /* increase this */
+}

@@ -16,6 +16,7 @@ const navLinks = [
   { label: 'Blog', to: '/blog' },
   // { label: 'Contact', to: '/contact' },
   { label: 'Plans', to: '/plans' },
+  
 ]
 
 export default function Navbar() {
@@ -59,6 +60,19 @@ export default function Navbar() {
       {link.label}
     </Link>
   ))}
+
+  {/* NURSING DROPDOWN */}
+ <div className={styles.dropdown}>
+  <span className={styles.link}>Nursing ▾</span>
+
+  <div className={styles.dropdownMenu}>
+  <Link to="/nursing">Nursing Care At Home</Link>
+  <Link to="/nursing">Elderly Care</Link>
+  <Link to="/nursing">ICU Care</Link>
+  <Link to="/nursing">Physiotherapy</Link>
+  <Link to="/nursing">Attenders</Link>
+</div>
+</div>
 </nav>
 
         <div className={styles.cta}>
