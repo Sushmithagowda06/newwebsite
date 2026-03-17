@@ -63,12 +63,16 @@ export default function Navbar() {
 
   {/* NURSING DROPDOWN */}
  <div className={styles.dropdown}>
-  <span className={styles.link}>Nursing ▾</span>
+  <Link to="/nursing" className={styles.link}>
+    Nursing ▾
+  </Link>
 
   <div className={styles.dropdownMenu}>
+    <Link to="/nursing">Doctors at Home</Link>
   <Link to="/nursing">Nursing Care At Home</Link>
   <Link to="/nursing">Elderly Care</Link>
-  <Link to="/nursing">ICU Care</Link>
+  <Link to="/nursing">Palliative Care</Link>
+  <Link to="/nursing">Post-Operative Care</Link>
   <Link to="/nursing">Physiotherapy</Link>
   <Link to="/nursing">Attenders</Link>
 </div>
