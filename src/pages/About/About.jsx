@@ -39,7 +39,7 @@ function About() {
   display: "flex", 
   alignItems: "center", 
   gap: "5rem", 
-  padding: "40px 20px",   // ← equal padding on both sides
+  padding: "40px 20px",   
   maxWidth: "1300px",
   margin: "0 auto"
 }}>
@@ -49,7 +49,7 @@ function About() {
     <p style={{ 
       fontSize: 23, 
       color: 'var(--text-muted)', 
-      lineHeight: 1.85, 
+      lineHeight: 1.5, 
       marginBottom: 24,
       fontFamily: 'Inter, sans-serif'
     }}>
@@ -60,9 +60,9 @@ function About() {
   the highest quality treatment — right where you feel most comfortable.
     </p>
     <p style={{ 
-      fontSize: 20, 
+      fontSize: 23, 
       color: 'var(--text-muted)', 
-      lineHeight: 1.85, 
+      lineHeight: 1.5, 
       marginBottom: 24,
       fontFamily: 'Inter, sans-serif'
     }}>
@@ -76,7 +76,9 @@ function About() {
     <div style={{ 
     flex: 1,
     position: "relative", 
-    height: "500px",
+    height: "400px",
+    maxWidth: "55%",
+    
   }}>
     <img
       className={`img-main ${show ? "show" : ""}`}
@@ -110,7 +112,7 @@ function About() {
         <div style={{ 
           flex: 0.8,
           position: "relative", 
-          height: "480px",
+          height: "400px",
           maxWidth: "55%",
           flexShrink: 0
         }}>
@@ -138,7 +140,7 @@ function About() {
             fontSize: 20, 
             padding: 0, 
             color: 'var(--text-muted)', 
-            lineHeight: 2.2 
+            lineHeight: 1.8
           }}>
             <li>✓ Experienced medical professionals with years of expertise</li>
             <li>✓ Quick response time and flexible scheduling</li>
@@ -161,13 +163,13 @@ function About() {
   {/* LEFT - Text */}
   <div style={{ flex: 1.2, marginLeft: "2rem" }}>
     <h1 style={{ textDecoration: "underline" }}>Our Vision</h1>
-    <ul style={{listStyle:"none",  fontSize: 18, padding: 0, color: 'var(--text-muted)', lineHeight: 2.2 }}>
+    <ul style={{listStyle:"none",  fontSize: 18, padding: 0, color: 'var(--text-muted)', lineHeight: 1.8 }}>
       <li> ✓ To make quality mental healthcare available to everyone, regardless of location or mobility, right from the comfort of their home.</li>
       <li> ✓ To eliminate barriers to mental health treatment by bringing professional care, therapy, and support directly to the patient's doorstep.</li>
       <li> ✓ To ensure every patient receives compassionate, personalized mental health services in a safe and familiar environment.</li>
       <li> ✓ To ensure every patient receives compassionate, personalized mental health services in a safe and familiar environment.</li>
-      <li> ✓ To empower individuals on their mental health journey by providing continuous support, monitoring, and treatment without the need to travel</li>
-      <li> ✓ To connect patients with experienced mental health professionals through seamless home visits, ensuring no one is left without the care they deserve.</li>
+      
+
     </ul>
   </div>
 
@@ -175,7 +177,7 @@ function About() {
   <div style={{ 
     flex: 0.8,
     position: "relative", 
-    height: "480px",
+    height: "400px",
     maxWidth: "55%",
     flexShrink: 0
   }}>
