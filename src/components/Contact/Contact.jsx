@@ -35,8 +35,8 @@ export default function Contact() {
       icon: <MdAccessTime size={24} color="#1e3a8a" />,
       title: 'Working Hours',
       lines: [
-        { text: 'Weekdays: 8 AM – 8 PM', href: null },
-        { text: 'Weekends: 9 AM – 5 PM', href: null },
+        { text: 'Weekdays: 24/7', href: null },
+        { text: 'Weekends: 24/7', href: null },
       ]
     },
   ]

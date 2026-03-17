@@ -18,7 +18,7 @@
   padding: 8px 18px;
   border-radius: 999px;
   background: #e6eefc;
-  color: #1e3a8a;
+  color: #001f5b;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -35,7 +35,7 @@
 }
 
 .contactTitle span {
-  color: #1e3a8a;
+  color: #001f5b;
 }
 
 /* SUBTITLE */
@@ -124,7 +124,7 @@
 /* BUTTON */
 .btnSend {
   width: 100%;
-  background: #1e3a8a;
+  background: #001f5b;
   color: white;
   font-size: 15px;
   font-weight: 700;
@@ -171,7 +171,7 @@
 }
 
 .success button {
-  background: #1e3a8a;
+  background: #001f5b;
   color: white;
   font-size: 14px;
   font-weight: 600;
@@ -227,7 +227,7 @@
 /* LINKS */
 .link {
   display: block;
-  color: #1e3a8a;
+  color: #001f5b;
   font-weight: 600;
   text-decoration: none;
   font-size: 14px;
