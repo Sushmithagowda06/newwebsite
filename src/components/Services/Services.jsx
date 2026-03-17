@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { FaUserMd, FaDumbbell, FaHandHoldingHeart, FaPills, FaUserNurse, FaMicroscope } from 'react-icons/fa'
 import styles from './Services.module.css'
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const SERVICES = [
   {
-    id: "consultation", icon: "🩺", iconBg: "#fce7f3", name: "Doctor Consultation",
+    id: "consultation", icon: <FaUserMd />, iconBg: "#fce7f3", name: "Doctor Consultation",
     tagline: "Consult experienced doctors and book appointments easily — in-clinic or online.",
-    badges: [{ label: "🟢 Home Visits", green: true }, { label: "In-Clinic" }, { label: "Online Video" }, { label: "₹300 onwards" }],
+    badges: [{ label: "Home Visits" }, { label: "In-Clinic" }, { label: "Online Video" }, { label: "₹300 onwards" }],
     procedures: ["General physician consultation", "Specialist consultation", "Online video consultation", "Follow-up appointments", "Second opinion service", "Health check-up packages"],
     ctaLabel: "Book Consultation",
     learnMore: {
@@ -15,11 +16,11 @@ const SERVICES = [
       body: "Our Doctor Consultation service connects you with over 120 verified specialists spanning 40+ medical disciplines. Whether you need an urgent same-day appointment with a general physician, a specialist second opinion, or a relaxed online video call from home — Cuure.health makes it seamless.",
       highlights: [{ num: "120+", label: "Verified Doctors" }, { num: "40+", label: "Specializations" }, { num: "4.9★", label: "Avg Rating" }, { num: "15min", label: "Avg Wait Time" }],
       gallery: [
-         { img: "/images/service images/doctor1.jpg", span: true },
-        { img: "/images/service images/doctor2.jpg" },
-        { img: "/images/service images/doctor3.jpg" },
-        { img: "/images/service images/doctor4.jpg" },
-        { img: "/images/service images/doctor5.jpg" },
+         { img: "/images/service/doctor1.jpg", span: true },
+        { img: "/images/service/doctor2.jpg" },
+        { img: "/images/service/doctor3.jpg" },
+        { img: "/images/service/doctor4.jpg" },
+        { img: "/images/service/doctor5.jpg" },
       ],
       steps: [
         { title: "Search & Select Your Doctor", desc: "Browse our curated list of verified specialists. Filter by specialty, location, language, or consultation fee." },
@@ -30,9 +31,9 @@ const SERVICES = [
     },
   },
   {
-    id: "physiotherapy", icon: "🦾", iconBg: "#fff7ed", name: "Physiotherapy",
+    id: "physiotherapy", icon: <FaDumbbell />, iconBg: "#fff7ed", name: "Physiotherapy",
     tagline: "Expert physiotherapy for injury recovery, pain management, and mobility restoration.",
-    badges: [{ label: "🟢 Home Visits Available", green: true }, { label: "In-Clinic" }, { label: "₹500 onwards" }],
+    badges: [{ label: "Home Visits"}, { label: "In-Clinic" }, { label: "₹500 onwards" }],
     procedures: ["Sports injury rehabilitation", "Post-surgery recovery", "Back & neck pain therapy", "Joint mobilisation", "Neurological physiotherapy", "Electrotherapy & ultrasound"],
     ctaLabel: "Book Session",
     learnMore: {
@@ -40,11 +41,11 @@ const SERVICES = [
       body: "Our physiotherapy service is delivered by certified therapists trained in manual therapy, exercise science, and modern rehabilitation protocols.",
       highlights: [{ num: "35+", label: "Physiotherapists" }, { num: "92%", label: "Recovery Rate" }, { num: "Home", label: "Visits Available" }],
       gallery: [
-        { img: "/images/service images/physio1.avif", span: true },
-        { img: "/images/service images/physio2.avif" },
-        { img: "/images/service images/physio3.avif" },
-        { img: "/images/service images/physio4.avif" },
-        { img: "/images/service images/physio5.jpg" },
+        { img: "/images/service/physio1.avif", span: true },
+        { img: "/images/service/physio2.avif" },
+        { img: "/images/service/physio3.jpg" },
+        { img: "/images/service/physio4.avif" },
+        { img: "/images/service/physio5.jpg" },
       ],
       steps: [
         { title: "Initial Assessment", desc: "A certified physiotherapist conducts a thorough evaluation of your condition, mobility, and pain levels." },
@@ -54,9 +55,9 @@ const SERVICES = [
     },
   },
   {
-    id: "elderly", icon: "👴", iconBg: "#fdf2f8", name: "Elderly Care",
+    id: "elderly", icon: <FaHandHoldingHeart />, iconBg: "#fdf2f8", name: "Elderly Care",
     tagline: "Compassionate, professional care designed specifically for our senior community.",
-    badges: [{ label: "🟢 24/7 Support", green: true }, { label: "Home Visits" }, { label: "₹800 onwards" }],
+    badges: [{ label: "24/7 Support" }, { label: "Home Visits" }, { label: "₹800 onwards" }],
     procedures: ["Geriatric medical assessment", "Medication management", "Companionship & daily care", "Dementia & Alzheimer's care", "Fall prevention programs", "Emergency response support"],
     ctaLabel: "Enquire Now",
     learnMore: {
@@ -64,11 +65,11 @@ const SERVICES = [
       body: "Our Elderly Care service is built around respect, empathy, and clinical excellence. We provide holistic care to seniors at home.",
       highlights: [{ num: "500+", label: "Seniors Cared For" }, { num: "24/7", label: "Emergency Line" }, { num: "CG", label: "Certified Caregivers" }],
       gallery: [
-  { img: "/images/service images/elder1.avif", span: true },
-  { img: "/images/service images/elder2.avif"},
-  { img: "/images/service images/elder3.jpg"},
-  { img: "/images/service images/elder4.jpg" },
-  { img: "/images/service images/elder5.jpg" },
+  { img: "/images/service/elder1.avif", span: true },
+  { img: "/images/servic/elder2.avif"},
+  { img: "/images/service/elder3.jpg"},
+  { img: "/images/service/elder4.jpg" },
+  { img: "/images/service/elder5.jpg" },
 ],
       steps: [
         { title: "Free Home Assessment", desc: "A geriatric specialist visits to assess health status, home safety, and care requirements." },
@@ -78,9 +79,9 @@ const SERVICES = [
     },
   },
   {
-    id: "pharmacy", icon: "✚", iconColor: "#16a34a", iconBg: "#f0fdf4", name: "Pharmacy",
+    id: "pharmacy", icon: <FaPills />, iconBg: "#f0fdf4", name: "Pharmacy",
     tagline: "Genuine medicines delivered to your door — fast, affordable, and prescription-verified.",
-    badges: [{ label: "🟢 2-Hr Delivery", green: true }, { label: "Prescription Upload" }, { label: "Genuine Medicines" }],
+    badges: [{ label: "2-Hr Delivery" }, { label: "Prescription Upload" }, { label: "Genuine Medicines" }],
     procedures: ["Prescription medicines", "OTC & wellness products", "Chronic disease refills", "Refrigerated medicines", "Nutritional supplements", "Medical devices & equipment"],
     ctaLabel: "Order Medicines",
     learnMore: {
@@ -88,11 +89,11 @@ const SERVICES = [
       body: "Cuure Pharmacy is your trusted digital pharmacy partner. We source exclusively from licensed manufacturers and distributors, ensuring 100% genuine, quality-checked medicines.",
       highlights: [{ num: "50K+", label: "Orders Fulfilled" }, { num: "2hr", label: "Avg Delivery" }, { num: "100%", label: "Genuine Meds" }],
       gallery: [
-       { img: "/images/service images/pharma1.jpg", span: true },
-    { img: "/images/service images/pharma2.jpg"},
-    { img: "/images/service images/pharma3.jpg"},
-    { img: "/images/service images/pharma4.jpg" },
-    { img: "/images/service images/pharma5.jpg" },
+       { img: "/images/service/pharma1.jpg", span: true },
+    { img: "/images/service/pharma2.jpg"},
+    { img: "/images/service/pharma3.jpg"},
+    { img: "/images/service/pharma4.jpg" },
+    { img: "/images/service/pharma5.jpg" },
       ],
       steps: [
         { title: "Upload Prescription", desc: "Take a photo of your prescription and upload it via app or website." },
@@ -102,9 +103,9 @@ const SERVICES = [
     },
   },
   {
-    id: "nursing", icon: "👩‍⚕️", iconBg: "#eff6ff", name: "Nursing",
+    id: "nursing", icon: <FaUserNurse />, iconBg: "#eff6ff", name: "Nursing",
     tagline: "Certified nurses providing professional medical care in the comfort of your home.",
-    badges: [{ label: "🟢 24/7 Available", green: true }, { label: "Home Visits" }, { label: "₹600 onwards" }],
+    badges: [{ label: "24/7 Available" }, { label: "Home Visits" }, { label: "₹600 onwards" }],
     procedures: ["IV drip administration", "Wound dressing & care", "Post-surgery nursing", "Catheter management", "Vital signs monitoring", "Injection administration"],
     ctaLabel: "Book a Nurse",
     learnMore: {
@@ -112,11 +113,11 @@ const SERVICES = [
       body: "Our home nursing service brings ICU-trained, certified nurses to your doorstep — available day and night.",
       highlights: [{ num: "200+", label: "Certified Nurses" }, { num: "24/7", label: "On-call" }, { num: "1hr", label: "Response Time" }],
       gallery: [
-       { img: "/images/service images/nursing1.jpg", span: true },
-    { img: "/images/service images/nursing2.jpg"},
-    { img: "/images/service images/nursing3.jpg"},
-    { img: "/images/service images/nursing4.jpg" },
-    { img: "/images/service images/nursing5.jpg" },
+       { img: "/images/service/nursing1.jpg", span: true },
+    { img: "/images/service/nursing2.avif"},
+    { img: "/images/service/nursing3.jpg"},
+    { img: "/images/service/nursing4.jpg" },
+    { img: "/images/service/nursing5.jpg" },
       ],
       steps: [
         { title: "Select Nursing Type", desc: "Choose from general nursing, ICU-trained, post-surgery, or paediatric nursing based on your needs." },
@@ -126,9 +127,9 @@ const SERVICES = [
     },
   },
   {
-    id: "diagnostics", icon: "🔬", iconBg: "#ecfdf5", name: "Diagnostics",
+    id: "diagnostics", icon: <FaMicroscope />, iconBg: "#ecfdf5", name: "Diagnostics",
     tagline: "Accurate lab tests and imaging — at our centres or collected from your home.",
-    badges: [{ label: "🟢 Home Sample Pickup", green: true }, { label: "1000+ Tests" }, { label: "Reports in 24hr" }],
+    badges: [{ label: " Home Sample Pickup" }, { label: "1000+ Tests" }, { label: "Reports in 24hr" }],
     procedures: ["Blood & urine tests", "X-ray & ultrasound", "MRI & CT scans", "ECG & Echo", "Full body health packages", "Genetic testing"],
     ctaLabel: "Book a Test",
     learnMore: {
@@ -136,11 +137,11 @@ const SERVICES = [
       body: "Our NABL-accredited diagnostic labs and imaging centres offer over 1,000 tests with the highest levels of accuracy.",
       highlights: [{ num: "1000+", label: "Tests Available" }, { num: "NABL", label: "Accredited Labs" }, { num: "24hr", label: "Report Time" }],
       gallery: [
-       { img: "/images/service images/dia1.jpg", span: true },
-    { img: "/images/service images/dia2.jpg"},
-    { img: "/images/service images/dia3.jpg"},
-    { img: "/images/service images/dia4.jpg" },
-    { img: "/images/service images/dia5.jpg" },
+       { img: "/images/service/dia1.jpg", span: true },
+    { img: "/images/service/dia2.jpg"},
+    { img: "/images/service/dia3.jpg"},
+    { img: "/images/service/dia4.jpg" },
+    { img: "/images/service/dia5.jpg" },
       ],
       steps: [
         { title: "Select Your Test", desc: "Search from 1,000+ tests or choose a health package." },
@@ -226,7 +227,7 @@ export function ServicesPreview() {
                 ) : (
                   <Link to="/appointment" className={styles.previewBtnBook}>{active.ctaLabel}</Link>
                 )}
-                <Link to="/services" className={styles.previewBtnLearn}>Learn More →</Link>
+                <Link to={`/services?service=${active.id}&learn=${active.id}`} className={styles.previewBtnLearn}>Learn More →</Link>
               </div>
             </div>
           </div>
@@ -339,9 +340,18 @@ function ServicePanel({ service, learnOpen, onToggleLearn }) {
 
 // ─── FULL SERVICES PAGE — default export, used in App.jsx /services route ────
 export default function Services() {
+  const [searchParams] = useSearchParams()
   const [activeId, setActiveId] = useState('consultation')
   const [learnOpenId, setLearnOpenId] = useState(null)
   const activeService = SERVICES.find((s) => s.id === activeId)
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    const service = searchParams.get('service')
+    const learn = searchParams.get('learn')
+    if (service) setActiveId(service)
+    if (learn) setLearnOpenId(learn)
+  }, [searchParams])
 
   return (
     <div className={styles.pageWrapper}>
@@ -353,10 +363,6 @@ export default function Services() {
           <h1 className={styles.pageHeroTitle}>
             Our <span className={styles.pageHeroFade}>Services</span>
           </h1>
-          <p className={styles.pageHeroDesc}>
-            Comprehensive medical care across 40+ specialties, powered by top-tier
-            specialists and cutting-edge technology.
-          </p>
         </div>
       </div>
 
@@ -368,7 +374,11 @@ export default function Services() {
               <div
                 key={s.id}
                 className={`${styles.tab}${activeId === s.id ? ` ${styles.tabActive}` : ''}`}
-                onClick={() => { setActiveId(s.id); setLearnOpenId(null) }}
+                onClick={() => {
+                setActiveId(s.id);
+                setLearnOpenId(null);
+                contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
               >
                 <div className={styles.tabIcon} style={{ color: s.iconColor || 'inherit' }}>{s.icon}</div>
                 <span className={styles.tabName}>{s.name}</span>
@@ -376,7 +386,7 @@ export default function Services() {
               </div>
             ))}
           </div>
-          <div className={styles.content}>
+          <div className={styles.content} ref={contentRef}>
             <ServicePanel
               key={activeId}
               service={activeService}
