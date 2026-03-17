@@ -93,9 +93,6 @@ function HomeCard({ doc }) {
         <button className={styles.homeBookBtn} onClick={() => navigate('/appointment')}>
           Book Now
         </button>
-        <button className={styles.homeChatBtn}>
-          <MdChat size={18} />
-        </button>
       </div>
     </div>
   );
@@ -138,7 +135,7 @@ export function DoctorsHome() {
   const navigate = useNavigate();
   return (
     <section className={styles.doctorsSection}>
-
+     <div className={styles.doctorsInner}></div>
       {/* Header */}
       <div className={styles.doctorsHeader}>
         <div className={styles.doctorsHeaderLeft}>
@@ -162,7 +159,7 @@ export function DoctorsHome() {
 
       {/* 4 cards grid — first 4 doctors only */}
       <div className={styles.doctorsGrid}>
-        {doctors.slice(0, 4).map(doc => (
+        {doctors.slice(0, 3).map(doc => (
           <HomeCard key={doc.id} doc={doc} />
         ))}
       </div>
