@@ -66,7 +66,7 @@ const SERVICES = [
       highlights: [{ num: "500+", label: "Seniors Cared For" }, { num: "24/7", label: "Emergency Line" }, { num: "CG", label: "Certified Caregivers" }],
       gallery: [
   { img: "/images/service/elder1.avif", span: true },
-  { img: "/images/servic/elder2.avif"},
+  { img: "/images/service/elder2.avif"},
   { img: "/images/service/elder3.jpg"},
   { img: "/images/service/elder4.jpg" },
   { img: "/images/service/elder5.jpg" },

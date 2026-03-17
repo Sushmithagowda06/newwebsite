@@ -5,14 +5,19 @@ import Home from './pages/Home'
 import Appointment from './pages/Appointment/Appointment'
 import Services from './components/Services/Services'
 import DoctorsPage from './pages/DoctorsPage'
-import Contact from './pages/Contact/Contact'
-import About from './pages/About'
+import Contact from './components/Contact/Contact'
+import About from './pages/About/About'
 import Blog from './pages/Blog'
+import Plans from './pages/Plans/Plans'
+import ScrollTop from './ScrollTop'
+import WhatsApp from './WhatsApp'
+import Nursing from './pages/Nursing/nursing';
 
 export default function App() {
   return (
     <>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/appointment" element={<Appointment />} />
@@ -21,7 +26,14 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/plans" element={<Plans />} />
+        <Route path="/nursing" element={<Nursing />} />
       </Routes>
+
+      {/* Global buttons */}
+      <ScrollTop />
+      <WhatsApp />
+
       <Footer />
     </>
   )

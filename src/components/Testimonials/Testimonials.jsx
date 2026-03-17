@@ -4,24 +4,24 @@ import styles from './Testimonials.module.css'
 const testimonials = [
   {
     name: 'Anjali Mehta',
-    role: 'Marketing Manager, Bengaluru',
+    role: 'Marketing Manager, Mysore',
     text: 'Cuure Health made booking doctor consultations and physiotherapy at home extremely easy. I scheduled the appointment in minutes and received professional care without leaving my home.',
     rating: 5,
-    emoji: '👩',
+    avatar: "/images/testimonials/anjali.png"
   },
   {
     name: 'Rajan Pillai',
-    role: 'Software Engineer, Chennai',
+    role: 'Software Engineer, Mysore',
     text: 'Cuure Health made getting medical care at home incredibly convenient. I scheduled the appointment in minutes and received professional treatment without leaving my house.',
     rating: 5,
-    emoji: '👨',
+    avatar: "/images/testimonials/rajan.png",
   },
   {
     name: 'Sunita Rao',
-    role: 'Teacher, Hyderabad',
+    role: 'Teacher, Mysore',
     text: 'Outstanding experience. The 24/7 support team was responsive when I had questions late at night. I never felt alone in managing my health condition. Highly recommend Cuure Health.',
     rating: 5,
-    emoji: '👩',
+    avatar: "/images/testimonials/sunita.png",
   },
 ]
 
@@ -45,7 +45,11 @@ export default function Testimonials() {
             <div className={styles.quote}>"</div>
             <p className={styles.text}>{testimonials[active].text}</p>
             <div className={styles.author}>
-              <div className={styles.authorAvatar}>{testimonials[active].emoji}</div>
+              <img
+  src={testimonials[active].avatar}
+  alt={testimonials[active].name}
+  className={styles.authorAvatar}
+/>
               <div>
                 <p className={styles.authorName}>{testimonials[active].name}</p>
                 <p className={styles.authorRole}>{testimonials[active].role}</p>
@@ -73,7 +77,11 @@ export default function Testimonials() {
                 className={`${styles.thumb} ${active === i ? styles.thumbActive : ''}`}
                 onClick={() => setActive(i)}
               >
-                <span className={styles.thumbEmoji}>{t.emoji}</span>
+                <img
+  src={t.avatar}
+  alt={t.name}
+  className={styles.thumbAvatar}
+/>
                 <div>
                   <p className={styles.thumbName}>{t.name}</p>
                   <p className={styles.thumbRole}>{t.role}</p>

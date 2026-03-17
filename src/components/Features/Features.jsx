@@ -2,25 +2,24 @@ import styles from './Features.module.css'
 
 const features = [
   {
-    icon: '💻',
-    title: 'Home Service',
-    desc: 'Book doctor consultations and physiotherapy at home with trusted healthcare professionals.',
+    icon: "/images/features/homeservice.png",
+    title: "Home Service",
+    desc: "Book doctor consultations and physiotherapy at home with trusted healthcare professionals.",
   },
   {
-    icon: '🏥',
-    title: 'Expert Medical Team',
-    desc: 'Our 500+ board-certified specialists deliver compassionate, precise, evidence-based care.',
+    icon: "/images/features/expert.png",
+    title: "Expert Medical Team",
+    desc: "Our 500+ board-certified specialists deliver compassionate, precise, evidence-based care.",
   },
   {
-    icon: '⭐',
-    title: 'Best Medical Service',
-    desc: 'Combining deep clinical expertise with cutting-edge diagnostic technology for accurate outcomes.',
+    icon: "/images/features/bestmedical.png",
+    title: "Best Medical Service",
+    desc: "Combining deep clinical expertise with cutting-edge diagnostic technology for accurate outcomes.",
   },
-  
   {
-    icon: '🔔',
-    title: '24/7 Instant Support',
-    desc: 'Round-the-clock medical support ensuring immediate help whenever you need it most.',
+    icon: "/images/features/available.png",
+    title: "24/7 Instant Support",
+    desc: "Round-the-clock medical support ensuring immediate help whenever you need it most.",
   },
 ]
 
@@ -44,7 +43,7 @@ export default function Features() {
           {features.map((f, i) => (
             <div key={i} className={styles.card} style={{ animationDelay: `${i * 0.1}s` }}>
               <div className={styles.iconWrap}>
-                <span className={styles.icon}>{f.icon}</span>
+                <img src={f.icon} alt={f.title} className={styles.icon} />
               </div>
               <h3 className={styles.cardTitle}>{f.title}</h3>
               <p className={styles.cardDesc}>{f.desc}</p>

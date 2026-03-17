@@ -1,31 +1,64 @@
 import { Link } from "react-router-dom";
 import styles from "./Hero.module.css";
-import doctorImg from "../images/doctor.png";
+// import doctorImg from "../images/doctor.png";
 import { useState, useEffect } from "react";
 
-const avatars = ["👩‍⚕️", "👨‍⚕️", "👩‍⚕️"];
+const avatars = [
+  "/images/testimonials/anjali.png",
+  "/images/testimonials/rajan.png",
+  "/images/testimonials/sunita.png",
+];
 
 /* Rotating Heading Component */
 function HeroTitle() {
-  const words = ["Healthcare", "Physiotherapy", "Consultation", "Elderly Care", "Nursing", "Diagnostics"];
-  const [index, setIndex] = useState(0);
+  const words = [
+    "Healthcare",
+    "Physiotherapy",
+    "Consultation",
+    "Elderly Care",
+    "Nursing",
+    "Diagnostics"
+  ];
+
+  const [wordIndex, setWordIndex] = useState(0);
+  const [text, setText] = useState("");
+  const [charIndex, setCharIndex] = useState(0);
+  const [fade, setFade] = useState(true);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
-    }, 2500);
+    if (charIndex < words[wordIndex].length) {
+      const timeout = setTimeout(() => {
+        setText((prev) => prev + words[wordIndex][charIndex]);
+        setCharIndex((prev) => prev + 1);
+      }, 150); // typing speed
 
-    return () => clearInterval(interval);
-  }, []);
+      return () => clearTimeout(timeout);
+    } else {
+      const pause = setTimeout(() => {
+        setFade(false); // start fade out
+
+        setTimeout(() => {
+          setText("");
+          setCharIndex(0);
+          setWordIndex((prev) => (prev + 1) % words.length);
+          setFade(true); // fade in next word
+        }, 400);
+      }, 2000);
+
+      return () => clearTimeout(pause);
+    }
+  }, [charIndex, wordIndex]);
 
   return (
     <h1 className={styles.title}>
-      Advanced
-      <p><span key={words[index]} className={styles.highlight}>
-        {words[index]}
-      </span></p>
-      At Your Home!
-    </h1>
+  Advanced
+
+  <span className={styles.wordContainer}>
+    <span className={styles.highlight}>{text}</span>
+  </span>
+
+  At Your Home!
+</h1>
   );
 }
 
@@ -48,7 +81,7 @@ export default function Hero() {
           <HeroTitle />
 
           <p className={styles.sub}>
-            Find trusted doctors, book online consultations, and get physiotherapy and healthcare services at home.
+            Find trusted doctors, book online consultations, and get all the healthcare services at home.
           </p>
 
           <div className={styles.actions}>
@@ -84,15 +117,9 @@ export default function Hero() {
           {/* Social proof */}
           <div className={styles.proof}>
             <div className={styles.avatars}>
-              {avatars.map((a, i) => (
-                <div
-                  key={i}
-                  className={styles.avatar}
-                  style={{ zIndex: avatars.length - i }}
-                >
-                  {a}
-                </div>
-              ))}
+            {avatars.map((a, i) => (
+  <img key={i} src={a} className={styles.avatar} />
+))}
             </div>
 
             <p className={styles.proofText}>
@@ -108,7 +135,7 @@ export default function Hero() {
 
             <div className={styles.imagePlaceholder}>
               <div className={styles.doctorGraphic}>
-                <img src={doctorImg} className={styles.doctorImg} />
+                <img src="/images/hero/doctor.png" className={styles.doctorImg} alt="Doctor" />
               </div>
             </div>
 
@@ -144,9 +171,34 @@ export default function Hero() {
       <div className={styles.statsBar}>
         <div className={styles.movingStrip}>
           <div className={styles.movingText}>
-            🏥 Healthcare at your home • 👩‍⚕️ Trusted Doctors • 📅 Instant
-            Appointments • 💊 Quality Care
-          </div>
+            <span className={styles.dot}>•</span>
+  <span className={styles.item}>
+    {/* <img src="/images/hero/home.png" alt="Healthcare at home" /> */}
+    Healthcare at your home
+  </span>
+
+  <span className={styles.dot}>•</span>
+
+  <span className={styles.item}>
+    {/* <img src="/images/hero/trusted.png" alt="Trusted Doctors" /> */}
+
+    Trusted Doctors
+  </span>
+
+  <span className={styles.dot}>•</span>
+
+  <span className={styles.item}>
+    {/* <img src="/images/hero/instant.png" alt="Instant Appointments" /> */}
+    Instant Appointments
+  </span>
+
+  <span className={styles.dot}>•</span>
+
+  <span className={styles.item}>
+    {/* <img src="/images/hero/quality.png" alt="Quality Care" /> */}
+    Quality Care
+  </span>
+</div>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import Doctors from "../components/Doctors/Doctors";
+import { DoctorsList } from '../components/Doctors/Doctors'
 import styles from './PageHero.module.css'
 
 export default function DoctorsPage() {
@@ -11,7 +11,7 @@ export default function DoctorsPage() {
           <p>500+ board-certified specialists across 40+ specialties, committed to your health and wellbeing.</p>
         </div>
       </div>
-      <Doctors />
+      <DoctorsList />
     </main>
   )
 }
