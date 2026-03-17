@@ -4,21 +4,21 @@ import styles from './Testimonials.module.css'
 const testimonials = [
   {
     name: 'Anjali Mehta',
-    role: 'Marketing Manager, Bengaluru',
+    role: 'Marketing Manager, Mysore',
     text: 'Cuure Health made booking doctor consultations and physiotherapy at home extremely easy. I scheduled the appointment in minutes and received professional care without leaving my home.',
     rating: 5,
     avatar: "/images/testimonials/anjali.png"
   },
   {
     name: 'Rajan Pillai',
-    role: 'Software Engineer, Chennai',
+    role: 'Software Engineer, Mysore',
     text: 'Cuure Health made getting medical care at home incredibly convenient. I scheduled the appointment in minutes and received professional treatment without leaving my house.',
     rating: 5,
     avatar: "/images/testimonials/rajan.png",
   },
   {
     name: 'Sunita Rao',
-    role: 'Teacher, Hyderabad',
+    role: 'Teacher, Mysore',
     text: 'Outstanding experience. The 24/7 support team was responsive when I had questions late at night. I never felt alone in managing my health condition. Highly recommend Cuure Health.',
     rating: 5,
     avatar: "/images/testimonials/sunita.png",
