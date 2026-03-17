@@ -7,25 +7,24 @@
 .doctorsSection {
   font-family: 'Inter', sans-serif;
   background: #fff;
-  padding: 72px 48px;
+  padding: 72px 0;
   box-sizing: border-box;
   width: 100%;
 }
 
-.doctorsHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 52px;
-  flex-wrap: wrap;
-  gap: 24px;
-  width: 100%;
+.doctorsInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
 }
 
-.doctorsHeaderLeft {
-  flex: 0 0 auto;
-  max-width: 50%;
-  padding-left: 195px;
+.doctorsHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 52px;
+  gap: 16px;
 }
 
 .doctorsPill {
@@ -38,7 +37,6 @@
   text-transform: uppercase;
   padding: 6px 16px;
   border-radius: 50px;
-  margin-bottom: 18px;
   border: 1px solid #d8e0f0;
 }
 
@@ -54,36 +52,6 @@
   color: #001f5b;
 }
 
-.doctorsHeaderRight {
-  max-width: 340px;
-  padding-top: 60px;
-  margin-left: 0;
-  text-align: left;
-}
-
-.doctorsHeaderRight p {
-  font-size: 15px;
-  color: #888;
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-.viewAllBtn {
-  font-size: 14px;
-  font-weight: 700;
-  color: #001f5b;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-family: 'Inter', sans-serif;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: gap 0.2s ease;
-}
-.viewAllBtn:hover { gap: 8px; }
-
 .doctorsGrid {
   display: flex;
   justify-content: center;
@@ -92,6 +60,34 @@
   margin: 0 auto;
   padding: 0;
   flex-wrap: wrap;
+}
+
+/* ── VIEW ALL ── */
+.viewAllWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.viewAllBtn {
+  font-size: 14px;
+  font-weight: 700;
+  color: #001f5b;
+  background: none;
+  border: 2px solid #001f5b;
+  border-radius: 50px;
+  padding: 12px 32px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+.viewAllBtn:hover {
+  background: #001f5b;
+  color: #fff;
+  gap: 8px;
 }
 
 /* ── HOME CARD ── */
@@ -106,7 +102,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
-  width: 300px;
+  width: 260px;
   flex-shrink: 0;
 }
 .homeCard:hover {
@@ -214,6 +210,7 @@
   color: #fff;
   transform: scale(1.08);
 }
+
 /* ═══════════════════════════════
    DOCTORS PAGE SECTION
 ═══════════════════════════════ */
@@ -349,36 +346,23 @@
    RESPONSIVE
 ═══════════════════════════════ */
 
-
 @media (max-width: 1024px) {
   .doctorsTitle { font-size: 38px; }
   .homeCard { width: 260px; }
 }
 
 @media (max-width: 768px) {
+  .doctorsInner { padding: 0 20px; }
   .doctorsGrid { flex-direction: column; align-items: center; }
   .homeCard { width: 100%; max-width: 340px; }
+  .listTop { flex-direction: column; }
+  .listPhoto { width: 100%; height: 180px; }
+  .listAvailRow { flex-direction: column; align-items: flex-start; }
+  .listBookBtn { width: 100%; justify-content: center; }
 }
 
 @media (max-width: 640px) {
-  .doctorsSection { padding: 48px 20px; }
+  .doctorsSection { padding: 48px 0; }
   .doctorsTitle { font-size: 30px; }
-  .doctorsHeader {
-    flex-direction: column;
-    align-items: center;
-  }
-  .doctorsHeaderLeft {
-    max-width: 100%;
-    padding-left: 0;
-    text-align: center;
-  }
-  .doctorsHeaderRight {
-    max-width: 100%;
-    padding-top: 0;
-    margin-left: 0;
-    text-align: center;
-  }
-  .viewAllBtn {
-    margin: 0 auto;
-  }
+  .viewAllBtn { width: 100%; justify-content: center; }
 }
