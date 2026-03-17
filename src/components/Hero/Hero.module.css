@@ -563,3 +563,38 @@
 .dot {
   margin: 0 14px;
 }
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  margin-left: -10px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  image-rendering: crisp-edges; /* 🔥 helps sharpness */
+}
+.avatar {
+  transform: translateZ(0); /* forces GPU rendering */
+}
+.avatar {
+  width: 40px;
+  height: 40px;
+}
+.avatar {
+  border: 2px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}

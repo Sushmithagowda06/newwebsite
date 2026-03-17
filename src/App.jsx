@@ -9,12 +9,14 @@ import Contact from './pages/Contact/Contact'
 import About from './pages/About'
 import Blog from './pages/Blog'
 import Plans from './pages/Plans/Plans'
-
+import ScrollTop from './ScrollTop'
+import WhatsApp from './WhatsApp'
 
 export default function App() {
   return (
     <>
       <Navbar />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/appointment" element={<Appointment />} />
@@ -25,6 +27,11 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/plans" element={<Plans />} />
       </Routes>
+
+      {/* Global buttons */}
+      <ScrollTop />
+      <WhatsApp />
+
       <Footer />
     </>
   )
