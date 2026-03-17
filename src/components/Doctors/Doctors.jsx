@@ -135,35 +135,28 @@ export function DoctorsHome() {
   const navigate = useNavigate();
   return (
     <section className={styles.doctorsSection}>
-     <div className={styles.doctorsInner}></div>
-      {/* Header */}
-      <div className={styles.doctorsHeader}>
-        <div className={styles.doctorsHeaderLeft}>
+      <div className={styles.doctorsInner}>
+
+        <div className={styles.doctorsHeader}>
           <div className={styles.doctorsPill}>MEET THE TEAM</div>
           <h2 className={styles.doctorsTitle}>
-            Our Expert<br />
-            <span>Doctors</span>
+            Our Expert <span>Doctors</span>
           </h2>
         </div>
-        <div className={styles.doctorsHeaderRight}>
-          <p>
-            Every specialist on our platform is board-certified,
-            continuously trained, and committed to delivering the
-            best patient outcomes.
-          </p>
+
+        <div className={styles.doctorsGrid}>
+          {doctors.slice(0, 4).map(doc => (
+            <HomeCard key={doc.id} doc={doc} />
+          ))}
+        </div>
+
+        <div className={styles.viewAllWrap}>
           <button className={styles.viewAllBtn} onClick={() => navigate('/doctors')}>
             View All Doctors →
           </button>
         </div>
-      </div>
 
-      {/* 4 cards grid — first 4 doctors only */}
-      <div className={styles.doctorsGrid}>
-        {doctors.slice(0, 3).map(doc => (
-          <HomeCard key={doc.id} doc={doc} />
-        ))}
       </div>
-
     </section>
   );
 }
