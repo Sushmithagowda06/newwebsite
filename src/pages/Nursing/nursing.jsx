@@ -25,7 +25,7 @@ const services = [
     id: 'palliative-care',
     title: 'Palliative Care',
     description: 'Compassionate care focused on comfort and quality of life for serious illness patients.',
-    image: '/images/service/nursing2.jpg',
+    image: '/images/service/nursing4.jpg',
   },
   {
     id: 'elderly-care',
@@ -98,8 +98,8 @@ export default function Nursing() {
             Compassionate Care By <span className={styles.heroFade}>Expert Nurses</span>
           </h1>
           <p className={styles.heroDesc}>
-            Our certified nurses provide round-the-clock professional care at your
-            home or clinic — from post-surgery recovery to chronic illness management.
+            Our certified nurses provide round-the-clock professional care at your home
+            {/* home or clinic — from post-surgery recovery to chronic illness management. */}
           </p>
         </div>
       </div>
