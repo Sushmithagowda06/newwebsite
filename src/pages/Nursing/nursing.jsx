@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import styles from './Nursing.module.css'
+import styles from './nursing.module.css'
 
 const services = [
   {
