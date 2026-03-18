@@ -188,19 +188,21 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .links {
-    display: none;
-    position: fixed;
-    top: 72px;
-    left: 0;
-    right: 0;
-    background: white;
-    flex-direction: column;
-    padding: 24px;
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-md);
-  }
+.links {
+  display: none;
+  position: absolute;   /* 🔥 change this */
+  top: 72px;
+  right: 16px;          /* move to right */
+  width: 220px;         /* small width */
+
+  background: white;
+  flex-direction: column;
+  padding: 12px;        /* reduce padding */
+  gap: 6px;
+
+  border-radius: 12px;  /* rounded corners */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
 
   .links.open {
     display: flex;

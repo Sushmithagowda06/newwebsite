@@ -77,9 +77,14 @@ export default function Footer() {
   }
 
   return (
-    <Link key={item} to={paths[item]} className={styles.colLink}>
-      {item}
-    </Link>
+   <Link
+  key={item}
+  to={paths[item]}
+  className={styles.colLink}
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+>
+  {item}
+</Link>
   )
 })}
             </div>
@@ -96,7 +101,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <p>© 2025 cuure.health. All rights reserved.</p>
+          <p>© 2026 cuure.health. All rights reserved.</p>
           <p>Made with ❤️ for better healthcare</p>
         </div>
       </div>
