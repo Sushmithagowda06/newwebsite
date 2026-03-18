@@ -51,7 +51,7 @@ function HeroTitle() {
 
   return (
     <h1 className={styles.title}>
-  Advanced
+  {/* Advanced */}
 
   <span className={styles.wordContainer}>
     <span className={styles.highlight}>{text}</span>

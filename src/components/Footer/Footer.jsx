@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
+import { FaWhatsapp, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const links = {
   Company: ['About Us', 'Our Doctors', 'Why Choose Us', 'Plans'],
@@ -20,15 +21,18 @@ export default function Footer() {
          className={styles.logoImg}
        />
      </Link>
-            <p>Revolutionizing healthcare through innovative technology for better lives and improved care.</p>
-            <div className={styles.socials}>
+            <p>
+  Revolutionizing healthcare through innovative technology for better lives and improved care.
+</p>
+
+<div className={styles.socials}>
   <a
     href="https://wa.me/917483068353"
     target="_blank"
     rel="noopener noreferrer"
     className={styles.social}
   >
-    W
+    <FaWhatsapp />
   </a>
 
   <a
@@ -37,7 +41,7 @@ export default function Footer() {
     rel="noopener noreferrer"
     className={styles.social}
   >
-    I
+    <FaInstagram />
   </a>
 
   <a
@@ -46,10 +50,10 @@ export default function Footer() {
     rel="noopener noreferrer"
     className={styles.social}
   >
-    Y
+    <FaYoutube />
   </a>
 </div>
-          </div>
+</div>
 
           {Object.entries(links).map(([group, items]) => (
             <div key={group} className={styles.col}>
