@@ -1,28 +1,20 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
-
-{/* <nav>
-  <Link to="/">Home</Link>
-  <Link to="/services">Services</Link>
-  <Link to="/doctors">Doctors</Link>
-  <Link to="/plans">Plans</Link>
-</nav> */}
 
 const navLinks = [
   { label: 'About', to: '/about' },
   { label: 'Services', to: '/services' },
   { label: 'Doctors', to: '/doctors' },
   { label: 'Blog', to: '/blog' },
-  // { label: 'Contact', to: '/contact' },
   { label: 'Plans', to: '/plans' },
-  
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -33,6 +25,10 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false)
   }, [location])
+
+  const handleNursingLink = (id) => {
+    navigate(`/nursing#${id}`)
+  }
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -48,36 +44,36 @@ export default function Navbar() {
           <span className={styles.logoText}>cuure<span>.health</span></span>
         </Link>
 
-       <nav className={`${styles.links} ${mobileOpen ? styles.open : ''}`}>
-  {navLinks.map(link => (
-    <Link
-      key={link.to}
-      to={link.to}
-      className={`${styles.link} ${
-        location.pathname === link.to ? styles.active : ""
-      }`}
-    >
-      {link.label}
-    </Link>
-  ))}
+        <nav className={`${styles.links} ${mobileOpen ? styles.open : ''}`}>
+          {navLinks.map(link => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`${styles.link} ${location.pathname === link.to ? styles.active : ''}`}
+            >
+              {link.label}
+            </Link>
+          ))}
 
-  {/* NURSING DROPDOWN */}
- <div className={styles.dropdown}>
-  <Link to="/nursing" className={styles.link}>
-    Nursing ▾
-  </Link>
-
-  <div className={styles.dropdownMenu}>
-    <Link to="/nursing">Doctors at Home</Link>
-  <Link to="/nursing">Nursing Care At Home</Link>
-  <Link to="/nursing">Elderly Care</Link>
-  <Link to="/nursing">Palliative Care</Link>
-  <Link to="/nursing">Post-Operative Care</Link>
-  <Link to="/nursing">Physiotherapy</Link>
-  <Link to="/nursing">Attenders</Link>
-</div>
-</div>
-</nav>
+          {/* NURSING DROPDOWN */}
+          <div className={styles.dropdown}>
+            <Link
+              to="/nursing"
+              className={`${styles.link} ${location.pathname === '/nursing' ? styles.active : ''}`}
+            >
+              Nursing ▾
+            </Link>
+            <div className={styles.dropdownMenu}>
+              <button className={styles.dropdownItem} onClick={() => handleNursingLink('doctors-at-home')}>Doctors at Home</button>
+              <button className={styles.dropdownItem} onClick={() => handleNursingLink('nursing-care-at-home')}>Nursing Care At Home</button>
+              <button className={styles.dropdownItem} onClick={() => handleNursingLink('elderly-care')}>Elderly Care</button>
+              <button className={styles.dropdownItem} onClick={() => handleNursingLink('palliative-care')}>Palliative Care</button>
+              <button className={styles.dropdownItem} onClick={() => handleNursingLink('post-operative-care')}>Post-Operative Care</button>
+              <button className={styles.dropdownItem} onClick={() => handleNursingLink('physiotherapy-at-home')}>Physiotherapy</button>
+              <button className={styles.dropdownItem} onClick={() => handleNursingLink('attenders-helpers')}>Attenders</button>
+            </div>
+          </div>
+        </nav>
 
         <div className={styles.cta}>
           <Link to="/appointment" className={styles.btnBook}>
