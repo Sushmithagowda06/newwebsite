@@ -5,6 +5,7 @@ import Features from '../components/Features/Features'
 import { DoctorsHome } from '../components/Doctors/Doctors'
 import Testimonials from '../components/Testimonials/Testimonials'
 import Contact from '../components/Contact/Contact'
+import Pharmacy from '../components/Pharmacy/Pharmacy'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       {/* <Plans /> */}
       <ServicesPreview />
       <Features />
+      <Pharmacy />
       <DoctorsHome />
       <Testimonials />
       <Contact />

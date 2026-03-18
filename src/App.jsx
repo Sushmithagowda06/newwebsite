@@ -12,7 +12,7 @@ import Plans from './pages/Plans/Plans'
 import ScrollTop from './ScrollTop'
 import WhatsApp from './WhatsApp'
 import Nursing from './pages/Nursing/nursing';
-import Pharmacy from './components/Pharmacy/pharmacy'
+import Pharmacy from './components/Pharmacy/Pharmacy'
 
 export default function App() {
   return (
