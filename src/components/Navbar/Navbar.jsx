@@ -33,16 +33,13 @@ export default function Navbar() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.nav}`}>
-        <Link to="/" className={styles.logo}>
-          <div className={styles.logoIcon}>
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-              <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2z" fill="var(--primary)"/>
-              <path d="M14 7v7l5 3" stroke="white" strokeWidth="2.5" strokeLinecap="round"/>
-              <path d="M9 14h10M14 9v10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-            </svg>
-          </div>
-          <span className={styles.logoText}>cuure<span>.health</span></span>
-        </Link>
+       <Link to="/" className={styles.logo}>
+  <img
+    src="/images/logo/image.png"
+    alt="cuure.health"
+    className={styles.logoImg}
+  />
+</Link>
 
         <nav className={`${styles.links} ${mobileOpen ? styles.open : ''}`}>
           {navLinks.map(link => (

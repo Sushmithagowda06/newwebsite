@@ -230,3 +230,7 @@
     display: none;
   }
 }
+.logoImg {
+  height: 42px;
+  object-fit: contain;
+}

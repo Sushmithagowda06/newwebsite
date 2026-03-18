@@ -13,15 +13,13 @@ export default function Footer() {
       <div className="container">
         <div className={styles.top}>
           <div className={styles.brand}>
-            <div className={styles.logo}>
-              <div className={styles.logoIcon}>
-                <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
-                  <circle cx="14" cy="14" r="12" fill="rgba(255,255,255,0.15)"/>
-                  <path d="M9 14h10M14 9v10" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <span>cuure<span>.health</span></span>
-            </div>
+      <Link to="/" className={styles.logo}>
+       <img
+         src="/images/logo/image.png"
+         alt="cuure.health"
+         className={styles.logoImg}
+       />
+     </Link>
             <p>Revolutionizing healthcare through innovative technology for better lives and improved care.</p>
             <div className={styles.socials}>
   <a
