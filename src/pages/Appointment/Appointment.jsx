@@ -11,7 +11,7 @@ export default function Appointment() {
           <p>Schedule a consultation with our expert doctors — in-person or virtually, at your convenience.</p>
         </div>
       </div>
-      <div className="container">
+      <div className="container" id="booking-form">
         <div className={styles.layout}>
           <div className={styles.formWrap}>
             <BookingForm />
