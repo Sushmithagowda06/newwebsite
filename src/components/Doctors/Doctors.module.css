@@ -7,7 +7,7 @@
 .doctorsSection {
   font-family: 'Inter', sans-serif;
   background: #fff;
-  padding: 72px 0;
+  padding: 40px 0;
   box-sizing: border-box;
   width: 100%;
 }
@@ -272,6 +272,7 @@
   height: 100%;
   object-fit: cover;
   object-position: top;
+  display: block;
 }
 
 .listRight {
@@ -349,20 +350,49 @@
 @media (max-width: 1024px) {
   .doctorsTitle { font-size: 38px; }
   .homeCard { width: 260px; }
+  .listPhoto {
+    width: 120px;
+    height: 130px;
+    flex-shrink: 0;
+  }
+  .listPhoto img {
+    object-position: center top;
+  }
+  .listName { font-size: 18px; }
 }
 
 @media (max-width: 768px) {
   .doctorsInner { padding: 0 20px; }
   .doctorsGrid { flex-direction: column; align-items: center; }
   .homeCard { width: 100%; max-width: 340px; }
-  .listTop { flex-direction: column; }
-  .listPhoto { width: 100%; height: 180px; }
+  .listTop { 
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .listPhoto { 
+    width: 110px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+  .listPhoto img {
+    object-position: center top;
+  }
   .listAvailRow { flex-direction: column; align-items: flex-start; }
   .listBookBtn { width: 100%; justify-content: center; }
+  .listName { font-size: 16px; }
+  .listDegree { font-size: 12px; }
+  .listClinic { font-size: 12px; }
+  .listFee { font-size: 12px; }
 }
 
 @media (max-width: 640px) {
   .doctorsSection { padding: 48px 0; }
   .doctorsTitle { font-size: 30px; }
   .viewAllBtn { width: 100%; justify-content: center; }
+  .dsPage { padding: 24px 16px; }
+  .listPhoto { 
+    width: 100px;
+    height: 110px;
+  }
 }
