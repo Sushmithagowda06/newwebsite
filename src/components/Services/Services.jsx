@@ -225,7 +225,7 @@ export function ServicesPreview() {
                 {active.id === 'pharmacy' ? (
                   <button className={styles.previewBtnBook}>{active.ctaLabel}</button>
                 ) : (
-                  <Link to="/appointment" className={styles.previewBtnBook}>{active.ctaLabel}</Link>
+                  <Link to="/appointment#booking-form" className={styles.previewBtnBook}>{active.ctaLabel}</Link>
                 )}
                 <Link to={`/services?service=${active.id}&learn=${active.id}`} className={styles.previewBtnLearn}>Learn More →</Link>
               </div>

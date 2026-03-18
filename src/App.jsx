@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home'
@@ -14,6 +15,20 @@ import WhatsApp from './WhatsApp'
 import Nursing from './pages/Nursing/nursing';
 
 export default function App() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+  const hash = window.location.hash
+  if (hash) {
+    setTimeout(() => {
+      const el = document.querySelector(hash)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }, 100)
+  } else {
+    window.scrollTo(0, 0)
+  }
+}, [pathname])
+
   return (
     <>
       <Navbar />
