@@ -48,9 +48,9 @@ export default function Contact() {
     <div className={styles.heroContainer}>
       <div className={styles.contactPill}>GET IN TOUCH</div>
 
-      <h1 className={styles.contactTitle}>
+      <h2 className={styles.contactTitle}>
         Contact <span>Us</span>
-      </h1>
+      </h2>
 
       <p className={styles.subtitle}>
         Have questions? We'd love to hear from you...
