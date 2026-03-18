@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useRef } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { FaUserMd, FaDumbbell, FaHandHoldingHeart, FaPills, FaUserNurse, FaMicroscope } from 'react-icons/fa'
 import styles from './Services.module.css'
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const SERVICES = [
   {
-    id: "consultation", icon: "🩺", iconBg: "#fce7f3", name: "Doctor Consultation",
+    id: "consultation", icon: <FaUserMd />, iconBg: "#fce7f3", name: "Doctor Consultation",
     tagline: "Consult experienced doctors and book appointments easily — in-clinic or online.",
-    badges: [{ label: "🟢 Home Visits", green: true }, { label: "In-Clinic" }, { label: "Online Video" }, { label: "₹300 onwards" }],
+    badges: [{ label: "Home Visits" }, { label: "In-Clinic" }, { label: "Online Video" }, { label: "₹300 onwards" }],
     procedures: ["General physician consultation", "Specialist consultation", "Online video consultation", "Follow-up appointments", "Second opinion service", "Health check-up packages"],
     ctaLabel: "Book Consultation",
     learnMore: {
@@ -30,9 +31,9 @@ const SERVICES = [
     },
   },
   {
-    id: "physiotherapy", icon: "🦾", iconBg: "#fff7ed", name: "Physiotherapy",
+    id: "physiotherapy", icon: <FaDumbbell />, iconBg: "#fff7ed", name: "Physiotherapy",
     tagline: "Expert physiotherapy for injury recovery, pain management, and mobility restoration.",
-    badges: [{ label: "🟢 Home Visits Available", green: true }, { label: "In-Clinic" }, { label: "₹500 onwards" }],
+    badges: [{ label: "Home Visits"}, { label: "In-Clinic" }, { label: "₹500 onwards" }],
     procedures: ["Sports injury rehabilitation", "Post-surgery recovery", "Back & neck pain therapy", "Joint mobilisation", "Neurological physiotherapy", "Electrotherapy & ultrasound"],
     ctaLabel: "Book Session",
     learnMore: {
@@ -42,7 +43,7 @@ const SERVICES = [
       gallery: [
         { img: "/images/service/physio1.avif", span: true },
         { img: "/images/service/physio2.avif" },
-        { img: "/images/service/physio3.avif" },
+        { img: "/images/service/physio3.jpg" },
         { img: "/images/service/physio4.avif" },
         { img: "/images/service/physio5.jpg" },
       ],
@@ -54,9 +55,9 @@ const SERVICES = [
     },
   },
   {
-    id: "elderly", icon: "👴", iconBg: "#fdf2f8", name: "Elderly Care",
+    id: "elderly", icon: <FaHandHoldingHeart />, iconBg: "#fdf2f8", name: "Elderly Care",
     tagline: "Compassionate, professional care designed specifically for our senior community.",
-    badges: [{ label: "🟢 24/7 Support", green: true }, { label: "Home Visits" }, { label: "₹800 onwards" }],
+    badges: [{ label: "24/7 Support" }, { label: "Home Visits" }, { label: "₹800 onwards" }],
     procedures: ["Geriatric medical assessment", "Medication management", "Companionship & daily care", "Dementia & Alzheimer's care", "Fall prevention programs", "Emergency response support"],
     ctaLabel: "Enquire Now",
     learnMore: {
@@ -78,9 +79,9 @@ const SERVICES = [
     },
   },
   {
-    id: "pharmacy", icon: "✚", iconColor: "#16a34a", iconBg: "#f0fdf4", name: "Pharmacy",
+    id: "pharmacy", icon: <FaPills />, iconBg: "#f0fdf4", name: "Pharmacy",
     tagline: "Genuine medicines delivered to your door — fast, affordable, and prescription-verified.",
-    badges: [{ label: "🟢 2-Hr Delivery", green: true }, { label: "Prescription Upload" }, { label: "Genuine Medicines" }],
+    badges: [{ label: "2-Hr Delivery" }, { label: "Prescription Upload" }, { label: "Genuine Medicines" }],
     procedures: ["Prescription medicines", "OTC & wellness products", "Chronic disease refills", "Refrigerated medicines", "Nutritional supplements", "Medical devices & equipment"],
     ctaLabel: "Order Medicines",
     learnMore: {
@@ -102,9 +103,9 @@ const SERVICES = [
     },
   },
   {
-    id: "nursing", icon: "👩‍⚕️", iconBg: "#eff6ff", name: "Nursing",
+    id: "nursing", icon: <FaUserNurse />, iconBg: "#eff6ff", name: "Nursing",
     tagline: "Certified nurses providing professional medical care in the comfort of your home.",
-    badges: [{ label: "🟢 24/7 Available", green: true }, { label: "Home Visits" }, { label: "₹600 onwards" }],
+    badges: [{ label: "24/7 Available" }, { label: "Home Visits" }, { label: "₹600 onwards" }],
     procedures: ["IV drip administration", "Wound dressing & care", "Post-surgery nursing", "Catheter management", "Vital signs monitoring", "Injection administration"],
     ctaLabel: "Book a Nurse",
     learnMore: {
@@ -113,7 +114,7 @@ const SERVICES = [
       highlights: [{ num: "200+", label: "Certified Nurses" }, { num: "24/7", label: "On-call" }, { num: "1hr", label: "Response Time" }],
       gallery: [
        { img: "/images/service/nursing1.jpg", span: true },
-    { img: "/images/service/nursing2.jpg"},
+    { img: "/images/service/nursing2.avif"},
     { img: "/images/service/nursing3.jpg"},
     { img: "/images/service/nursing4.jpg" },
     { img: "/images/service/nursing5.jpg" },
@@ -126,9 +127,9 @@ const SERVICES = [
     },
   },
   {
-    id: "diagnostics", icon: "🔬", iconBg: "#ecfdf5", name: "Diagnostics",
+    id: "diagnostics", icon: <FaMicroscope />, iconBg: "#ecfdf5", name: "Diagnostics",
     tagline: "Accurate lab tests and imaging — at our centres or collected from your home.",
-    badges: [{ label: "🟢 Home Sample Pickup", green: true }, { label: "1000+ Tests" }, { label: "Reports in 24hr" }],
+    badges: [{ label: " Home Sample Pickup" }, { label: "1000+ Tests" }, { label: "Reports in 24hr" }],
     procedures: ["Blood & urine tests", "X-ray & ultrasound", "MRI & CT scans", "ECG & Echo", "Full body health packages", "Genetic testing"],
     ctaLabel: "Book a Test",
     learnMore: {
@@ -226,7 +227,7 @@ export function ServicesPreview() {
                 ) : (
                   <Link to="/appointment" className={styles.previewBtnBook}>{active.ctaLabel}</Link>
                 )}
-                <Link to="/services" className={styles.previewBtnLearn}>Learn More →</Link>
+                <Link to={`/services?service=${active.id}&learn=${active.id}`} className={styles.previewBtnLearn}>Learn More →</Link>
               </div>
             </div>
           </div>
@@ -339,9 +340,18 @@ function ServicePanel({ service, learnOpen, onToggleLearn }) {
 
 // ─── FULL SERVICES PAGE — default export, used in App.jsx /services route ────
 export default function Services() {
+  const [searchParams] = useSearchParams()
   const [activeId, setActiveId] = useState('consultation')
   const [learnOpenId, setLearnOpenId] = useState(null)
   const activeService = SERVICES.find((s) => s.id === activeId)
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    const service = searchParams.get('service')
+    const learn = searchParams.get('learn')
+    if (service) setActiveId(service)
+    if (learn) setLearnOpenId(learn)
+  }, [searchParams])
 
   return (
     <div className={styles.pageWrapper}>
@@ -353,10 +363,6 @@ export default function Services() {
           <h1 className={styles.pageHeroTitle}>
             Our <span className={styles.pageHeroFade}>Services</span>
           </h1>
-          <p className={styles.pageHeroDesc}>
-            Comprehensive medical care across 40+ specialties, powered by top-tier
-            specialists and cutting-edge technology.
-          </p>
         </div>
       </div>
 
@@ -368,7 +374,11 @@ export default function Services() {
               <div
                 key={s.id}
                 className={`${styles.tab}${activeId === s.id ? ` ${styles.tabActive}` : ''}`}
-                onClick={() => { setActiveId(s.id); setLearnOpenId(null) }}
+                onClick={() => {
+                setActiveId(s.id);
+                setLearnOpenId(null);
+                contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
               >
                 <div className={styles.tabIcon} style={{ color: s.iconColor || 'inherit' }}>{s.icon}</div>
                 <span className={styles.tabName}>{s.name}</span>
@@ -376,7 +386,7 @@ export default function Services() {
               </div>
             ))}
           </div>
-          <div className={styles.content}>
+          <div className={styles.content} ref={contentRef}>
             <ServicePanel
               key={activeId}
               service={activeService}
