@@ -223,7 +223,7 @@
   justify-content: center;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border);
-  animation: float 5s ease-in-out infinite;
+  /* animation: float 5s ease-in-out infinite; */
 }
 
 .doctorGraphic {

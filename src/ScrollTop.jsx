@@ -6,7 +6,7 @@ export default function ScrollTop() {
   useEffect(() => {
     const checkScroll = () => {
       if (window.scrollY > 300) setShow(true);
-      else setShow(false);d
+      else setShow(false); // ✅ fixed
     };
 
     window.addEventListener("scroll", checkScroll);
