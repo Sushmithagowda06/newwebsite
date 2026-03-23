@@ -12,22 +12,23 @@ import Blog from './pages/Blog'
 import Plans from './pages/Plans/Plans'
 import ScrollTop from './ScrollTop'
 import WhatsApp from './WhatsApp'
-import Nursing from './pages/Nursing/nursing';
+import Nursing from './pages/Nursing/nursing'
+import BlogDetail from "./components/Blog/BlogDetail"; // ✅ ADD THIS
 
 export default function App() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-  const hash = window.location.hash
-  if (hash) {
-    setTimeout(() => {
-      const el = document.querySelector(hash)
-      if (el) el.scrollIntoView({ behavior: 'smooth' })
-    }, 100)
-  } else {
-    window.scrollTo(0, 0)
-  }
-}, [pathname])
+    const hash = window.location.hash
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname])
 
   return (
     <>
@@ -40,15 +41,16 @@ export default function App() {
         <Route path="/doctors" element={<DoctorsPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />  {/* ✅ correct */}
+
         <Route path="/plans" element={<Plans />} />
         <Route path="/nursing" element={<Nursing />} />
       </Routes>
 
-      {/* Global buttons */}
       <ScrollTop />
       <WhatsApp />
-
       <Footer />
     </>
   )
