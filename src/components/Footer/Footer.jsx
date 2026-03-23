@@ -14,13 +14,16 @@ export default function Footer() {
       <div className="container">
         <div className={styles.top}>
           <div className={styles.brand}>
-      <Link to="/" className={styles.logo}>
-       <img
-         src="/images/logo/image.png"
-         alt="cuure.health"
-         className={styles.logoImg}
-       />
-     </Link>
+      <Link
+  to="/"
+  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+>
+  <img
+    src="/images/logo/image.png"
+    alt="cuure.health"
+    className={styles.logoImg}
+  />
+</Link>
             <p>
   Revolutionizing healthcare through innovative technology for better lives and improved care.
 </p>
