@@ -1,13 +1,53 @@
 import { useParams } from 'react-router-dom'
 
-const imgStyle = {
-  width: '100%',
-  borderRadius: '12px',
-  margin: '20px 0',
-  maxHeight: '500px',
-  objectFit: 'cover'
+// ─── Reusable alternating split section ──────────────────────────────────────
+function SplitSection({ img, alt, title, children, reverse = false }) {
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: reverse ? 'row-reverse' : 'row',
+      alignItems: 'center',
+      gap: '48px',
+      margin: '48px 0',
+    }}>
+      <div style={{ flex: '0 0 42%' }}>
+        <img
+          src={img}
+          alt={alt}
+          style={{
+            width: '100%',
+            height: '300px',
+            objectFit: 'cover',
+            borderRadius: '16px',
+            display: 'block',
+            boxShadow: '0 4px 24px rgba(0,0,0,0.10)',
+          }}
+        />
+      </div>
+      <div style={{ flex: 1 }}>
+        {title && (
+          <h2 style={{
+            fontSize: '1.4rem',
+            fontWeight: 700,
+            marginBottom: '12px',
+            color: 'var(--text, #1a1218)',
+          }}>
+            {title}
+          </h2>
+        )}
+        <div style={{
+          fontSize: '0.97rem',
+          lineHeight: 1.85,
+          color: 'var(--text-muted, #555)',
+        }}>
+          {children}
+        </div>
+      </div>
+    </div>
+  )
 }
 
+// ─── Blog data ────────────────────────────────────────────────────────────────
 const blogs = [
   {
     slug: "cardiologist-signs",
@@ -17,33 +57,82 @@ const blogs = [
     emoji: "❤️",
     description: (
       <>
-        <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=800" alt="Cardiology" style={imgStyle} />
+        {/* 1 — text right, image left */}
+        <SplitSection
+          img="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=800"
+          alt="Doctor reviewing heart scans"
+          title="Why Heart Health Matters"
+        >
+          <p>Heart disease is the leading cause of death worldwide, claiming over 17 million lives every year. Despite its prevalence, many people dismiss or ignore the early warning signs, attributing symptoms to stress, aging, or minor ailments. This delay can be life-threatening.</p>
+          <p style={{ marginTop: 10 }}>Seeing a cardiologist at the first sign of trouble — rather than waiting for a crisis — can mean the difference between a manageable condition and a life-altering event. The following five warning signs should never be brushed aside.</p>
+        </SplitSection>
 
-        <h2>Why Heart Health Matters</h2>
-        <p>Heart disease is the leading cause of death worldwide. Many people ignore early warning signs, assuming they are minor issues. Seeing a cardiologist early can save your life. Here are 5 signs you should never ignore.</p>
+        {/* 2 — image right */}
+        <SplitSection
+          img="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800"
+          alt="Chest pain illustration"
+          reverse
+          title="1. Persistent Chest Pain or Discomfort"
+        >
+          <p>Chest pain is the most well-known warning sign of heart problems. It may feel like pressure, squeezing, fullness, or a burning sensation in the center or left side of your chest. Sometimes the pain radiates to the arm, neck, jaw, or back.</p>
+          <p style={{ marginTop: 10 }}>Even if the pain comes and goes, or seems mild, it should never be ignored. Not all heart-related chest pain is dramatic — some people describe it simply as a sense of heaviness or tightness. Always get it checked immediately.</p>
+        </SplitSection>
 
-        <h2>1. Persistent Chest Pain or Discomfort</h2>
-        <p>Chest pain is the most well-known warning sign of heart problems. It may feel like pressure, squeezing, fullness, or pain in the center or left side of your chest. Even if the pain comes and goes, it should never be ignored.</p>
+        {/* 3 — image left */}
+        <SplitSection
+          img="https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=800"
+          alt="Person feeling breathless climbing stairs"
+          title="2. Unexplained Shortness of Breath"
+        >
+          <p>If you find yourself getting breathless during activities that previously felt easy — like climbing a single flight of stairs, walking to your car, or carrying groceries — your heart may not be pumping blood efficiently to meet your body's demands.</p>
+          <p style={{ marginTop: 10 }}>This symptom is a key indicator of heart failure or coronary artery disease. When the heart weakens, fluid can build up in the lungs, making every breath feel labored. Do not assume it is simply a fitness issue — see a doctor promptly.</p>
+        </SplitSection>
 
-        <h2>2. Unexplained Shortness of Breath</h2>
-        <p>If you find yourself getting breathless during activities that previously felt easy — like climbing stairs or walking short distances — your heart may not be pumping blood efficiently. This is a key sign of heart failure or coronary artery disease.</p>
+        {/* 4 — image right */}
+        <SplitSection
+          img="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800"
+          alt="Person feeling dizzy"
+          reverse
+          title="3. Dizziness, Lightheadedness, or Fainting"
+        >
+          <p>Sudden dizziness or fainting (syncope) can indicate a significant drop in blood pressure or an irregular heart rhythm (arrhythmia). When the brain does not receive enough oxygen-rich blood, it causes these sudden and often frightening episodes.</p>
+          <p style={{ marginTop: 10 }}>These episodes should always be evaluated by a cardiologist, especially if they occur without warning, last more than a few seconds, or are accompanied by chest pain or palpitations. They can signal dangerous underlying conditions that require urgent attention.</p>
+        </SplitSection>
 
-        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800" alt="Heart checkup" style={imgStyle} />
+        {/* 5 — image left */}
+        <SplitSection
+          img="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800"
+          alt="Heart palpitation illustration"
+          title="4. Irregular Heartbeats or Palpitations"
+        >
+          <p>Feeling like your heart is racing, fluttering, pounding, or skipping beats can be a sign of arrhythmia. You might notice this sensation in your chest, throat, or neck. While occasional palpitations after caffeine or exercise are normal, frequent episodes are not.</p>
+          <p style={{ marginTop: 10 }}>Prolonged or recurring palpitations require medical evaluation to rule out conditions like atrial fibrillation (AFib) — one of the most common heart rhythm disorders — which significantly raises the risk of stroke if left untreated.</p>
+        </SplitSection>
 
-        <h2>3. Dizziness, Lightheadedness, or Fainting</h2>
-        <p>Sudden dizziness or fainting can indicate a drop in blood pressure or an irregular heart rhythm (arrhythmia). These episodes should always be evaluated by a cardiologist as they can signal serious underlying conditions.</p>
+        {/* 6 — image right */}
+        <SplitSection
+          img="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800"
+          alt="Swollen ankle and leg"
+          reverse
+          title="5. Significant Leg or Ankle Swelling"
+        >
+          <p>Swelling (edema) in the legs, ankles, or feet can be a sign that your heart is not pumping blood effectively, causing fluid to accumulate in the lower extremities. You might notice your shoes feel tight by the end of the day or that pressing the skin leaves an indentation.</p>
+          <p style={{ marginTop: 10 }}>This is a common but serious symptom of heart failure. When paired with fatigue, breathlessness, or weight gain from fluid retention, it is a strong signal to seek immediate cardiology evaluation. Early intervention prevents worsening damage to the heart.</p>
+        </SplitSection>
 
-        <h2>4. Irregular Heartbeats or Palpitations</h2>
-        <p>Feeling like your heart is racing, fluttering, or skipping beats can be a sign of arrhythmia. While some palpitations are harmless, frequent or prolonged episodes require medical evaluation to rule out conditions like atrial fibrillation.</p>
-
-        <h2>5. Significant Leg or Ankle Swelling</h2>
-        <p>Swelling in the legs, ankles, or feet can be a sign that your heart is not pumping blood effectively, causing fluid to accumulate. This is a common symptom of heart failure and should be assessed promptly.</p>
-
-        <h2>When to Act</h2>
-        <p>If you experience any of these symptoms, do not wait. Early diagnosis and treatment dramatically improve outcomes. Book a consultation with a cardiologist today — your heart will thank you.</p>
+        {/* 7 — image left */}
+        <SplitSection
+          img="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800"
+          alt="Doctor consultation"
+          title="When to Act — and What to Expect"
+        >
+          <p>If you experience any of these symptoms, do not wait to "see if it gets better." Cardiac conditions are time-sensitive — early diagnosis through an ECG, echocardiogram, stress test, or blood markers can identify problems before they become emergencies.</p>
+          <p style={{ marginTop: 10 }}>A cardiologist will assess your risk factors — including family history, cholesterol, blood pressure, and lifestyle — and develop a personalized prevention or treatment plan. Your heart works every second of every day. Give it the attention it deserves.</p>
+        </SplitSection>
       </>
     )
   },
+
   {
     slug: "lung-health",
     title: "Understanding Your Lung Health: A Guide",
@@ -52,46 +141,76 @@ const blogs = [
     emoji: "🫁",
     description: (
       <>
-        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800" alt="Lung Health" style={imgStyle} />
+        <SplitSection
+          img="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800"
+          alt="Lung health illustration"
+          title="Why Lung Health is Critical"
+        >
+          <p>Your lungs work around the clock — breathing in oxygen and expelling carbon dioxide with every single breath. Adults take around 20,000 breaths per day, and the lungs process all of it silently. When lung health deteriorates, every aspect of your life is affected — from energy levels and sleep to mental clarity and heart health.</p>
+          <p style={{ marginTop: 10 }}>The lungs are resilient, but they are also vulnerable to pollution, infection, smoking, and chronic disease. Understanding the warning signs and knowing how to protect your lungs is essential for long-term well-being.</p>
+        </SplitSection>
 
-        <h2>Why Lung Health is Critical</h2>
-        <p>Your lungs work around the clock — breathing in oxygen and expelling carbon dioxide. When lung health deteriorates, every aspect of your life is affected. Understanding the warning signs and how to protect your lungs is essential for long-term well-being.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800"
+          alt="Doctor examining lungs"
+          reverse
+          title="Warning Signs Your Lungs Need Attention"
+        >
+          <p>Lung diseases often develop silently, causing significant damage long before symptoms become obvious. Do not ignore these warning signs:</p>
+          <ul style={{ paddingLeft: '1.2rem', marginTop: '10px', lineHeight: 2.1 }}>
+            <li>Chronic cough lasting more than 3 weeks</li>
+            <li>Shortness of breath during everyday activities</li>
+            <li>Wheezing or a whistling sound while breathing</li>
+            <li>Persistent fatigue and unexplained low energy</li>
+            <li>Chest tightness, pressure, or pain</li>
+            <li>Coughing up blood or unusually thick mucus</li>
+            <li>Frequent respiratory infections like bronchitis or pneumonia</li>
+          </ul>
+        </SplitSection>
 
-        <h2>When Are Your Lungs Not Healthy?</h2>
-        <p>Lung diseases often develop silently, causing significant damage before symptoms become severe. Do not ignore these warning signs:</p>
-        <ul>
-          <li>Chronic Cough lasting more than 3 weeks</li>
-          <li>Shortness of Breath during everyday activities</li>
-          <li>Wheezing or whistling sound while breathing</li>
-          <li>Persistent Fatigue and low energy</li>
-          <li>Chest Tightness or Pain</li>
-          <li>Coughing up Blood or Excess Mucus</li>
-        </ul>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800"
+          alt="COPD and lung conditions"
+          title="Common Conditions Affecting Lung Health"
+        >
+          <ul style={{ paddingLeft: '1.2rem', lineHeight: 2.1 }}>
+            <li><strong>COPD:</strong> Includes emphysema and chronic bronchitis, most often caused by long-term smoking or exposure to harmful fumes.</li>
+            <li><strong>Asthma:</strong> Chronic inflammation of the airways that narrows them and causes breathing difficulty, wheezing, and chest tightness.</li>
+            <li><strong>Pneumonia:</strong> A serious infection that causes inflammation and fluid accumulation in the air sacs of one or both lungs.</li>
+            <li><strong>Pulmonary Fibrosis:</strong> Scarring of lung tissue that makes it increasingly difficult to breathe over time.</li>
+            <li><strong>Lung Cancer:</strong> One of the most common and deadly cancers, strongly linked to smoking but also caused by radon, asbestos, and air pollution.</li>
+          </ul>
+        </SplitSection>
 
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800" alt="Breathing" style={imgStyle} />
+        <SplitSection
+          img="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800"
+          alt="Exercise for lung health"
+          reverse
+          title="How Exercise Improves Lung Function"
+        >
+          <p>Regular aerobic exercise is one of the most powerful tools for maintaining lung health. Activities like brisk walking, swimming, cycling, and yoga strengthen the diaphragm and intercostal muscles, improve oxygen exchange, and increase lung capacity over time.</p>
+          <p style={{ marginTop: 10 }}>Even 20–30 minutes of moderate exercise five days a week can meaningfully improve how efficiently your lungs work. For those with existing lung conditions, breathing exercises like diaphragmatic breathing and pursed lip breathing are also highly effective.</p>
+        </SplitSection>
 
-        <h2>Common Conditions Affecting Lung Health</h2>
-        <ul>
-          <li><strong>COPD:</strong> Including emphysema and chronic bronchitis, often caused by smoking.</li>
-          <li><strong>Asthma:</strong> Chronic inflammation of the airways causing breathing difficulty.</li>
-          <li><strong>Pneumonia:</strong> Fluid accumulation in the air sacs of the lungs.</li>
-          <li><strong>Pulmonary Edema:</strong> Fluid buildup causing severe breathing problems.</li>
-          <li><strong>Lung Cancer:</strong> Often linked to smoking but can be caused by other toxins.</li>
-        </ul>
-
-        <h2>7 Simple Steps to Protect Your Lung Health</h2>
-        <ul>
-          <li><strong>Don't Smoke:</strong> This is the single most important step to prevent lung cancer and COPD.</li>
-          <li><strong>Avoid Pollutants:</strong> Use air purifiers at home and check local air quality indexes.</li>
-          <li><strong>Exercise Regularly:</strong> Aerobic exercise builds lung capacity and strengthens breathing muscles.</li>
-          <li><strong>Practice Deep Breathing:</strong> Diaphragmatic breathing improves airflow and lung efficiency.</li>
-          <li><strong>Stay Hydrated:</strong> Water keeps the mucosal lining of the lungs thin and healthy.</li>
-          <li><strong>Get Vaccinated:</strong> Flu and pneumonia vaccines protect against serious lung infections.</li>
-          <li><strong>Regular Check-ups:</strong> Early detection of lung disease dramatically improves outcomes.</li>
-        </ul>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800"
+          alt="Healthy habits for lungs"
+          title="7 Steps to Protect Your Lung Health"
+        >
+          <ul style={{ paddingLeft: '1.2rem', lineHeight: 2.1 }}>
+            <li><strong>Don't Smoke:</strong> The single most important step — smoking causes up to 85% of all lung cancers.</li>
+            <li><strong>Avoid Indoor Pollutants:</strong> Use air purifiers, ensure proper ventilation, and avoid chemical fumes at home.</li>
+            <li><strong>Check Outdoor Air Quality:</strong> Limit strenuous outdoor activity on high-pollution days.</li>
+            <li><strong>Stay Hydrated:</strong> Water keeps the mucosal lining of the lungs thin, aiding in clearing mucus.</li>
+            <li><strong>Get Vaccinated:</strong> Influenza and pneumonia vaccines significantly reduce serious lung infection risk.</li>
+            <li><strong>Practice Deep Breathing:</strong> Diaphragmatic breathing improves airflow and expands lung capacity.</li>
+            <li><strong>Schedule Regular Check-ups:</strong> Spirometry tests can detect declining lung function years before symptoms appear.</li>
+          </ul>
+        </SplitSection>
       </>
     )
   },
+
   {
     slug: "virtual-consultations",
     title: "How Virtual Consultations Are Changing Healthcare",
@@ -100,35 +219,66 @@ const blogs = [
     emoji: "💻",
     description: (
       <>
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800" alt="Virtual Consultation" style={imgStyle} />
+        <SplitSection
+          img="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800"
+          alt="Patient on video call with doctor"
+          title="What Are Virtual Consultations?"
+        >
+          <p>Virtual consultations allow patients to connect with doctors, specialists, and healthcare professionals through video calls, phone calls, or secure chat platforms — all from the comfort of their own home. From routine check-ups and prescription renewals to mental health therapy and specialist referrals, almost any non-emergency medical need can now be addressed virtually.</p>
+          <p style={{ marginTop: 10 }}>The global telehealth market has grown dramatically, with millions of consultations now happening every day. What was once an emergency workaround has become a permanent, preferred model of care for many patients and providers alike.</p>
+        </SplitSection>
 
-        <h2>What Are Virtual Consultations?</h2>
-        <p>Virtual consultations allow patients to connect with doctors, specialists, and healthcare professionals through video calls, phone calls, or chat platforms — all from the comfort of their own home. From routine check-ups to mental health therapy, almost any non-emergency medical need can now be addressed virtually.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800"
+          alt="Rural patient accessing healthcare online"
+          reverse
+          title="Breaking Down Geographic Barriers"
+        >
+          <p>Millions of people in rural, remote, or underserved areas struggle to access quality healthcare. Traveling hours to see a specialist — only to wait weeks for an appointment — is a reality for far too many. Virtual consultations eliminate these geographical barriers entirely.</p>
+          <p style={{ marginTop: 10 }}>A patient in a remote village can now connect with a top cardiologist in the city within minutes. This democratization of healthcare is one of the most significant shifts in medicine in recent decades, reducing health disparities across socioeconomic groups.</p>
+        </SplitSection>
 
-        <h2>How They Are Changing Healthcare</h2>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800"
+          alt="Doctor using telehealth platform"
+          title="Saving Time and Reducing Costs"
+        >
+          <p>No more driving, finding parking, sitting in crowded waiting rooms, or taking half a day off work. A virtual appointment can be scheduled, attended, and completed in under 20 minutes — saving patients hours and reducing stress significantly.</p>
+          <p style={{ marginTop: 10 }}>Virtual visits are also often significantly cheaper than in-person appointments. Patients save on transport costs, and clinics reduce overhead by optimizing schedules and reducing administrative burden. For chronic disease patients who need frequent check-ins, these savings add up considerably over time.</p>
+        </SplitSection>
 
-        <h3>1. Breaking Down Barriers to Access</h3>
-        <p>Millions of people in rural or underserved areas struggle to access quality healthcare. Virtual consultations eliminate geographical barriers, connecting patients with specialists they would otherwise never have access to.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800"
+          alt="Online therapy mental health"
+          reverse
+          title="Transforming Mental Health Support"
+        >
+          <p>Mental health has perhaps benefited most from the telehealth revolution. Patients who previously avoided therapy due to social stigma, distance, or mobility challenges can now access counseling, psychiatry, and support groups privately and conveniently from home.</p>
+          <p style={{ marginTop: 10 }}>Studies show that online therapy outcomes are comparable to in-person therapy for conditions including depression, anxiety, and PTSD. The lower barrier to entry means more people are seeking help earlier — before conditions escalate into crisis.</p>
+        </SplitSection>
 
-        <h3>2. Saving Time for Everyone</h3>
-        <p>No more driving, parking, or waiting. A virtual appointment can be scheduled and completed in minutes, saving patients hours of their day while allowing doctors to see more patients efficiently.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800"
+          alt="Remote patient monitoring wearables"
+          title="Remote Monitoring and Chronic Disease Care"
+        >
+          <p>For patients with chronic conditions like diabetes, hypertension, or heart failure, virtual consultations paired with remote monitoring devices are transforming day-to-day care. Wearable devices track blood pressure, glucose levels, heart rhythms, and oxygen saturation in real time, sending data directly to care teams.</p>
+          <p style={{ marginTop: 10 }}>This continuous monitoring allows doctors to spot concerning trends before they become emergencies, adjust medications proactively, and keep patients safely out of the hospital. It also gives patients greater ownership of their health data and engagement in their own care.</p>
+        </SplitSection>
 
-        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800" alt="Doctor online" style={imgStyle} />
-
-        <h3>3. Reducing Healthcare Costs</h3>
-        <p>Virtual visits are often significantly cheaper than in-person appointments. Patients save on travel costs, and clinics save on overhead — making healthcare more affordable for everyone.</p>
-
-        <h3>4. Improving Mental Health Support</h3>
-        <p>Mental health is one of the biggest beneficiaries of telehealth. Patients who previously avoided therapy due to stigma or distance can now access counseling privately and conveniently from home.</p>
-
-        <h3>5. Continuity of Care</h3>
-        <p>Virtual consultations make it easier for patients to have regular follow-ups with their doctors, improving long-term health outcomes. Chronic disease patients especially benefit from consistent remote monitoring and check-ins.</p>
-
-        <h2>The Future of Virtual Healthcare</h2>
-        <p>The future is hybrid — a seamless blend of in-person and virtual care. Technologies like AI-powered diagnostics, remote monitoring devices, and wearable health trackers will further enhance virtual consultations, making them even more accurate and personalized.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800"
+          alt="AI-powered healthcare future"
+          reverse
+          title="The Future: AI, Hybrid Care, and Beyond"
+        >
+          <p>The future of healthcare is hybrid — a seamless blend of in-person and virtual care guided by artificial intelligence. AI-powered diagnostic tools are already helping doctors analyze symptoms, flag abnormal test results, and prioritize high-risk patients during virtual visits.</p>
+          <p style={{ marginTop: 10 }}>As technology continues to evolve, virtual consultations will become even more accurate, personalized, and integrated with the physical healthcare system. The goal is not to replace human care, but to make compassionate, expert care available to everyone, everywhere, at any time.</p>
+        </SplitSection>
       </>
     )
   },
+
   {
     slug: "nutrition-gut-health",
     title: "Nutrition Tips for Better Gut Health",
@@ -137,48 +287,69 @@ const blogs = [
     emoji: "🌿",
     description: (
       <>
-        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800" alt="Healthy food" style={imgStyle} />
+        <SplitSection
+          img="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800"
+          alt="Colorful healthy food"
+          title="Why Gut Health Matters More Than You Think"
+        >
+          <p>Your gut is often called your "second brain" — and for good reason. It is the foundation of your overall health, housing over 70% of your immune system and producing more than 90% of the body's serotonin. The gut microbiome contains trillions of bacteria, fungi, and microorganisms that affect everything from digestion and immunity to mood and cognitive function.</p>
+          <p style={{ marginTop: 10 }}>When the balance of good and bad bacteria is disrupted — a condition known as dysbiosis — the effects ripple throughout the entire body. Nurturing your gut is one of the most impactful things you can do for your long-term health.</p>
+        </SplitSection>
 
-        <h2>Why Gut Health Matters</h2>
-        <p>Your gut is more than just a digestive system — it is the foundation of your overall health. From immunity to mental well-being, a healthy gut influences nearly every aspect of your body. The gut microbiome contains trillions of bacteria that affect everything from digestion to mood.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800"
+          alt="Bloated stomach signs of unhealthy gut"
+          reverse
+          title="Signs of an Unhealthy Gut"
+        >
+          <p>An unhealthy gut rarely announces itself loudly at first. Instead, it whispers through seemingly unrelated symptoms that many people dismiss or attribute to stress:</p>
+          <ul style={{ paddingLeft: '1.2rem', marginTop: '10px', lineHeight: 2.1 }}>
+            <li>Chronic bloating, gas, cramping, or irregular bowel movements</li>
+            <li>Weakened immunity and frequent colds or infections</li>
+            <li>Unexplained fatigue and persistent brain fog</li>
+            <li>Skin problems like acne, eczema, or rosacea</li>
+            <li>Anxiety, depression, and mood instability</li>
+            <li>Food intolerances or sensitivities that worsen over time</li>
+            <li>Increased risk of autoimmune and inflammatory conditions</li>
+          </ul>
+        </SplitSection>
 
-        <h2>Signs of an Unhealthy Gut</h2>
-        <ul>
-          <li>Bloating, gas, and indigestion</li>
-          <li>Weakened immunity and frequent infections</li>
-          <li>Fatigue and persistent brain fog</li>
-          <li>Skin problems like acne and eczema</li>
-          <li>Anxiety, depression, and mood swings</li>
-          <li>Increased risk of chronic diseases</li>
-        </ul>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1467453678174-768ec283a940?w=800"
+          alt="High fiber foods whole grains"
+          title="Eat More Fiber — Your Gut's Best Friend"
+        >
+          <p>Dietary fiber is the single most important nutrient for a healthy gut. It feeds beneficial bacteria in your colon, producing short-chain fatty acids that reduce inflammation, strengthen the gut lining, and regulate blood sugar. Yet most people consume less than half the recommended daily amount.</p>
+          <p style={{ marginTop: 10 }}>Aim for 25–30g of fiber per day from diverse sources: whole grains (oats, quinoa, brown rice), legumes (lentils, chickpeas, black beans), fruits (apples, berries, pears), and vegetables (broccoli, carrots, sweet potato). Variety matters — different fibers feed different strains of beneficial bacteria.</p>
+        </SplitSection>
 
-        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800" alt="Nutrition" style={imgStyle} />
+        <SplitSection
+          img="https://images.unsplash.com/photo-1559181567-c3190215a521?w=800"
+          alt="Fermented foods yogurt kimchi"
+          reverse
+          title="Fermented Foods and Probiotics"
+        >
+          <p>Fermented foods are naturally rich in live beneficial bacteria (probiotics) that directly replenish and diversify your gut microbiome. Regular consumption of fermented foods is linked to reduced gut inflammation, improved digestion, and even better mood and mental health outcomes.</p>
+          <p style={{ marginTop: 10 }}>Excellent sources include plain yogurt with live cultures, kefir, idli and dosa (traditional South Indian fermented foods), kimchi, sauerkraut, miso, tempeh, and kombucha. Aim to include at least one fermented food with each meal for consistent microbiome support.</p>
+        </SplitSection>
 
-        <h2>Top Nutrition Tips for a Healthier Gut</h2>
-
-        <h3>1. Eat More Fiber</h3>
-        <p>Fiber feeds the good bacteria in your gut. Include whole grains, legumes, fruits, and vegetables in every meal. Aim for at least 25–30g of fiber per day.</p>
-
-        <h3>2. Add Fermented Foods</h3>
-        <p>Fermented foods are rich in natural probiotics that boost good gut bacteria. Try yogurt with live cultures, kefir, idli, dosa, kimchi, sauerkraut, and kombucha.</p>
-
-        <h3>3. Stay Hydrated</h3>
-        <p>Water helps move food through your digestive tract and supports the mucosal lining of the gut. Aim for 8–10 glasses of water per day.</p>
-
-        <h3>4. Eat Prebiotic Foods</h3>
-        <p>Prebiotics are food for your good gut bacteria. Great sources include garlic, onions, bananas, asparagus, leeks, and chicory root.</p>
-
-        <h3>5. Limit Sugar and Processed Foods</h3>
-        <p>Excess sugar and ultra-processed foods feed harmful bacteria and disrupt gut balance. Cut down on sugary drinks, packaged snacks, fast food, and artificial sweeteners.</p>
-
-        <h3>6. Include Healthy Fats</h3>
-        <p>Healthy fats like olive oil, avocados, nuts, seeds, and fatty fish reduce gut inflammation and support a balanced microbiome.</p>
-
-        <h3>7. Eat Mindfully and Slowly</h3>
-        <p>Eating too fast leads to poor digestion. Chew each bite thoroughly, eat without distractions, and avoid eating late at night.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800"
+          alt="Balanced nutritious meal"
+          title="5 More Habits for a Thriving Gut"
+        >
+          <ul style={{ paddingLeft: '1.2rem', lineHeight: 2.1 }}>
+            <li><strong>Stay Hydrated:</strong> Water supports the mucosal lining of the gut and keeps digestion moving. Aim for 8–10 glasses daily.</li>
+            <li><strong>Eat Prebiotic Foods:</strong> Garlic, onions, leeks, bananas, asparagus, and chicory root feed your good bacteria.</li>
+            <li><strong>Limit Ultra-Processed Foods:</strong> Artificial additives, emulsifiers, and excess sugar directly harm beneficial bacterial colonies.</li>
+            <li><strong>Manage Stress:</strong> The gut-brain axis means chronic stress physically damages your microbiome. Meditation, sleep, and exercise all help.</li>
+            <li><strong>Eat Mindfully and Slowly:</strong> Thorough chewing reduces digestive strain and improves nutrient absorption. Avoid eating in a hurry or while distracted.</li>
+          </ul>
+        </SplitSection>
       </>
     )
   },
+
   {
     slug: "cancer-awareness",
     title: "Cancer Awareness & Prevention: What Everyone Should Know",
@@ -187,46 +358,77 @@ const blogs = [
     emoji: "🎗️",
     description: (
       <>
-        <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=800" alt="Cancer Awareness" style={imgStyle} />
+        <SplitSection
+          img="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=800"
+          alt="Cancer awareness ribbon"
+          title="What is Cancer?"
+        >
+          <p>Cancer occurs when cells in the body begin to grow and divide uncontrollably, ignoring the normal signals that tell them when to stop. These abnormal cells can invade surrounding tissues and travel through the bloodstream or lymphatic system to form new tumors in distant organs — a process called metastasis.</p>
+          <p style={{ marginTop: 10 }}>Cancer can affect almost any organ — the lungs, breast, colon, prostate, liver, skin, brain, and more. It is not a single disease but a collection of over 100 distinct diseases, each with its own biology, risk factors, and treatment approaches. Early detection dramatically improves survival rates across virtually all types.</p>
+        </SplitSection>
 
-        <h2>What is Cancer?</h2>
-        <p>Cancer occurs when cells in the body grow uncontrollably, invading surrounding tissues and spreading to other parts of the body. It can affect almost any organ — the lungs, breast, colon, skin, brain, and more. Early detection dramatically improves survival rates.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800"
+          alt="Doctor examining patient for cancer signs"
+          reverse
+          title="Early Warning Signs to Never Ignore"
+        >
+          <p>Many cancers are highly treatable when caught early, yet symptoms are often dismissed or delayed. Know your body and act on these warning signs promptly:</p>
+          <ul style={{ paddingLeft: '1.2rem', marginTop: '10px', lineHeight: 2.1 }}>
+            <li>Unexplained weight loss of more than 5kg without diet or exercise changes</li>
+            <li>Persistent fatigue that does not improve with rest</li>
+            <li>Any new lump, thickening, or swelling under the skin</li>
+            <li>Changes in moles — new growths, irregular borders, changing color</li>
+            <li>Persistent cough, hoarseness, or coughing up blood</li>
+            <li>Difficulty swallowing lasting more than a few days</li>
+            <li>Unexplained bleeding — in urine, stool, or from the nipple</li>
+            <li>Persistent indigestion or abdominal discomfort</li>
+          </ul>
+        </SplitSection>
 
-        <h2>Early Warning Signs to Never Ignore</h2>
-        <ul>
-          <li>Unexplained weight loss — losing weight without trying</li>
-          <li>Persistent fatigue — tiredness that doesn't go away with rest</li>
-          <li>Unusual lumps — any new lump or thickening under the skin</li>
-          <li>Changes in skin — new moles, darkening, or yellowing of skin</li>
-          <li>Persistent cough or hoarseness — especially with blood</li>
-          <li>Difficulty swallowing — lasting more than a few days</li>
-          <li>Unexplained bleeding or bruising</li>
-        </ul>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1555708982-8645ec9ce3cc?w=800"
+          alt="No smoking quit tobacco"
+          title="1. Quit Smoking — The Most Impactful Step"
+        >
+          <p>Tobacco use is responsible for approximately 22% of all cancer deaths globally — including cancers of the lung, throat, mouth, esophagus, stomach, pancreas, kidney, bladder, and cervix. Smoking is the single largest preventable cause of cancer worldwide.</p>
+          <p style={{ marginTop: 10 }}>The good news: the body begins repairing itself almost immediately after quitting. Within 10 years of stopping, the risk of lung cancer falls to roughly half that of a continuing smoker. It is never too late to quit, and the benefits begin the moment you stop.</p>
+        </SplitSection>
 
-        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800" alt="Prevention" style={imgStyle} />
+        <SplitSection
+          img="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800"
+          alt="Anti-cancer diet fruits vegetables"
+          reverse
+          title="2. Diet, Exercise, and Weight Management"
+        >
+          <p>Research suggests that up to 30–35% of cancers are linked to diet and lifestyle factors. A diet rich in colorful fruits, vegetables, whole grains, legumes, and healthy fats provides powerful antioxidants and phytochemicals that protect cells from DNA damage that can lead to cancer.</p>
+          <p style={{ marginTop: 10 }}>Regular physical activity — at least 150 minutes of moderate exercise per week — reduces the risk of breast, colon, endometrial, and several other cancers by regulating hormones, reducing inflammation, and supporting immune function. Maintaining a healthy weight is equally important, as excess body fat drives chronic inflammation and hormonal imbalances that fuel cancer growth.</p>
+        </SplitSection>
 
-        <h2>How to Reduce Your Risk</h2>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800"
+          alt="Cancer screening mammogram"
+          title="3. Screening, Vaccination, and Early Detection"
+        >
+          <p>Regular cancer screenings catch tumors at their earliest, most treatable stages — often before any symptoms appear. Talk to your doctor about which screenings are appropriate based on your age, sex, and family history:</p>
+          <ul style={{ paddingLeft: '1.2rem', marginTop: '10px', lineHeight: 2.1 }}>
+            <li><strong>Mammogram:</strong> Recommended every 1–2 years for women over 40 to detect breast cancer early.</li>
+            <li><strong>Colonoscopy:</strong> From age 45, to detect polyps or colorectal cancer before symptoms develop.</li>
+            <li><strong>Pap Smear & HPV Test:</strong> Detects cervical changes caused by human papillomavirus.</li>
+            <li><strong>Low-Dose CT Scan:</strong> Recommended for long-term smokers to screen for early lung cancer.</li>
+            <li><strong>PSA Test:</strong> Blood test to screen for prostate cancer in high-risk men over 50.</li>
+          </ul>
+        </SplitSection>
 
-        <h3>1. Quit Smoking</h3>
-        <p>Tobacco is responsible for nearly 1 in 3 cancer deaths. Quitting at any age significantly reduces your risk of lung, throat, and mouth cancers.</p>
-
-        <h3>2. Eat a Healthy Diet</h3>
-        <p>Eat plenty of fruits, vegetables, and whole grains. Limit processed meats, red meat, sugar, and ultra-processed foods. A healthy diet can reduce cancer risk by up to 30%.</p>
-
-        <h3>3. Stay Active</h3>
-        <p>Regular physical activity reduces the risk of breast, colon, and other cancers. Aim for at least 30 minutes of exercise most days of the week.</p>
-
-        <h3>4. Limit Alcohol</h3>
-        <p>Even moderate drinking increases the risk of several cancers including breast, liver, and colon cancer. The less alcohol you drink, the lower your cancer risk.</p>
-
-        <h3>5. Get Vaccinated</h3>
-        <p>The HPV vaccine protects against cervical and other cancers. The Hepatitis B vaccine reduces liver cancer risk. Talk to your doctor about which vaccines are right for you.</p>
-
-        <h3>6. Get Regular Screenings</h3>
-        <p>Many cancers are treatable when caught early. Talk to your doctor about mammograms, colonoscopy, Pap smear, and low-dose CT scans based on your age and risk factors.</p>
-
-        <h2>Final Thought</h2>
-        <p>Cancer does not discriminate — it can affect anyone. But with awareness, prevention, and early action, we have more power than ever before. Take care of your body, know the signs, and never hesitate to seek medical advice.</p>
+        <SplitSection
+          img="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800"
+          alt="Hope and awareness"
+          reverse
+          title="A Final Word: Awareness Saves Lives"
+        >
+          <p>Cancer does not discriminate — it can affect anyone, regardless of age, gender, or background. But with greater awareness, smarter prevention habits, and access to early screening, we have more power than ever to reduce its impact. The advances in cancer treatment over the past two decades have been remarkable, with survival rates improving dramatically across many cancer types.</p>
+          <p style={{ marginTop: 10 }}>Take care of your body. Know the warning signs. Act early. And never hesitate to seek medical advice when something does not feel right — your instincts and your health are always worth listening to.</p>
+        </SplitSection>
       </>
     )
   },
@@ -235,20 +437,22 @@ const blogs = [
 export { blogs }
 
 export default function BlogDetail() {
-  const { slug } = useParams();
-  const blog = blogs.find(b => b.slug === slug);
+  const { slug } = useParams()
+  const blog = blogs.find(b => b.slug === slug)
 
   if (!blog) return <p style={{ padding: '5rem' }}>Blog not found.</p>
 
   return (
-    <main style={{ paddingTop: '5rem', maxWidth: '1100px', margin: '0 auto', padding: '5rem 40px' }}>
-      <p style={{ color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', fontSize: 13 }}>{blog.tag}</p>
-      <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 8 }}>{blog.emoji} {blog.title}</h1>
+    <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '5rem 40px' }}>
+      <p style={{ color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', fontSize: 13 }}>
+        {blog.tag}
+      </p>
+      <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 8 }}>
+        {blog.emoji} {blog.title}
+      </h1>
       <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>{blog.date}</p>
       <hr style={{ margin: '20px 0' }} />
-      <div style={{ lineHeight: 1.8, fontSize: 18, color: 'var(--text-muted)' }}>
-        {blog.description}
-      </div>
+      <div>{blog.description}</div>
     </main>
   )
 }
