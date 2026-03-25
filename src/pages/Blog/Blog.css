@@ -27,8 +27,8 @@
   /* ── Grid ── */
   
   .blog-grid-wrapper {
-    padding: 64px 24px;
-  }
+  padding: 120px 30px !important;
+}
   
   .blog-grid {
     display: grid;
