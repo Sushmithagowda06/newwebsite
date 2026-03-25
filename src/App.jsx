@@ -6,8 +6,9 @@ import Appointment from './pages/Appointment/Appointment'
 import Services from './components/Services/Services'
 import DoctorsPage from './pages/DoctorsPage'
 import Contact from './pages/Contact/Contact'
-import About from './pages/About'
-import Blog from './pages/Blog'
+import About from "./pages/About/About"
+import Blog from './pages/blog/Blog';
+import BlogDetail from './components/Blog/BlogDetail'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
       </Routes>
       <Footer />
     </>

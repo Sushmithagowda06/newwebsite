@@ -17,6 +17,12 @@ export default function Blog() {
       {/* Hero */}
       <div className="blog-hero">
         <div className="container">
+        <button
+          className="blog-hero__btn"
+          
+        >
+         Read our Blog
+        </button>
           <h1 className="blog-hero__title">
             Health <span>Blog</span>
           </h1>
