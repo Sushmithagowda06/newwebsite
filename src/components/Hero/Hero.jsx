@@ -74,14 +74,14 @@ export default function Hero() {
         <div className={styles.content}>
           <div className={styles.badge}>
             <span className={styles.badgeDot} />
-            Trusted by 10K+ patients
+            Trusted Home Nursing Services in Mysore
           </div>
 
           {/* Rotating Title */}
           <HeroTitle />
 
           <p className={styles.sub}>
-            Find trusted doctors, book online consultations, nursing care and all the healthcare services at home.
+          We provide professional home nursing services in Mysore including elderly care, post-surgery care, ICU care at home, and patient support by trained nurses.
           </p>
 
           <div className={styles.actions}>
