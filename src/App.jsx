@@ -7,10 +7,10 @@ import Services from './components/Services/Services'
 import DoctorsPage from './pages/DoctorsPage'
 import Contact from './pages/Contact/Contact'
 import About from "./pages/About/About"
-import Blog from './pages/blog/Blog';
+import Blog from './pages/Blog/Blog';
 import BlogDetail from './components/Blog/BlogDetail'
 
-export default function App() {
+export default function App(){
   return (
     <>
       <Navbar />
