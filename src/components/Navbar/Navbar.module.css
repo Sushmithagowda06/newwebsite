@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 9999;
-  padding: 16px 0;
+  padding: 0px 0;
   transition: all var(--transition);
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
@@ -15,7 +15,7 @@
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   box-shadow: var(--shadow-sm);
-  padding: 12px 0;
+  padding: 0px 0;
 }
 
 .nav {
@@ -235,6 +235,6 @@
   }
 }
 .logoImg {
-  height: 45px;
+  height: 75px;
   object-fit: contain;
 }
