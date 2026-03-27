@@ -270,9 +270,11 @@
 .listPhoto img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: top;
+  object-fit: contain;
+  object-position: center center;
   display: block;
+  background: #e8eef8;
+  padding: 10px;
 }
 
 .listRight {
@@ -292,6 +294,13 @@
   font-size: 14px;
   color: #888;
   font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.listKmc {
+  font-size: 13px;
+  color: #001f5b;
+  font-weight: 500;
   margin-bottom: 10px;
 }
 
@@ -365,12 +374,12 @@
   .doctorsInner { padding: 0 20px; }
   .doctorsGrid { flex-direction: column; align-items: center; }
   .homeCard { width: 100%; max-width: 340px; }
-  .listTop { 
+  .listTop {
     flex-direction: row;
     align-items: flex-start;
     gap: 16px;
   }
-  .listPhoto { 
+  .listPhoto {
     width: 110px;
     height: 120px;
     flex-shrink: 0;
@@ -382,6 +391,7 @@
   .listBookBtn { width: 100%; justify-content: center; }
   .listName { font-size: 16px; }
   .listDegree { font-size: 12px; }
+  .listKmc { font-size: 12px; }
   .listClinic { font-size: 12px; }
   .listFee { font-size: 12px; }
 }
@@ -391,7 +401,7 @@
   .doctorsTitle { font-size: 30px; }
   .viewAllBtn { width: 100%; justify-content: center; }
   .dsPage { padding: 24px 16px; }
-  .listPhoto { 
+  .listPhoto {
     width: 100px;
     height: 110px;
   }
